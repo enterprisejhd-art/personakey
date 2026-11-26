@@ -22,6 +22,8 @@ interface HeroReceiverNode {
   label: string;
   sublabel: string;
   partitionCode: string;
+  isMvp: boolean;
+  phaseTag: string;
   unlockedLabel: string;
   sealedLabel: string;
   curvature: number;
@@ -30,30 +32,36 @@ interface HeroReceiverNode {
 
 const HERO_RECEIVER_NODES: HeroReceiverNode[] = [
   {
-    id: 'nhs',
-    label: 'NHS Emergency Triage',
-    sublabel: 'Clinical Responder Unit',
-    partitionCode: 'Partition 05',
-    unlockedLabel: 'UNLOCKED: Partition 05 [Emergency]',
-    sealedLabel: 'SEALED: Partitions 01–04',
-    curvature: 36,
-    icon: 'nhs',
-  },
-  {
     id: 'coworking',
     label: 'Coworking Hot-Desk',
-    sublabel: 'Shared Workstation #04',
+    sublabel: 'Inclusive Workplace · Desk #04',
     partitionCode: 'Partition 01',
+    isMvp: true,
+    phaseTag: 'Year-1 Pilot MVP (Available Now)',
     unlockedLabel: 'UNLOCKED: Partition 01 [Workplace]',
     sealedLabel: 'SEALED: Partitions 02–05',
     curvature: 36,
     icon: 'coworking',
   },
   {
+    id: 'nhs',
+    label: 'NHS Emergency Triage',
+    sublabel: 'Clinical Responder Unit',
+    partitionCode: 'Partition 05',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
+    unlockedLabel: 'UNLOCKED: Partition 05 [Emergency]',
+    sealedLabel: 'SEALED: Partitions 01–04',
+    curvature: 36,
+    icon: 'nhs',
+  },
+  {
     id: 'ev',
-    label: 'Shared EV Cabin',
+    label: 'Car Hire / Shared EV',
     sublabel: 'Fleet Mobility Pod #B12',
     partitionCode: 'Partition 02',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     unlockedLabel: 'UNLOCKED: Partition 02 [Mobility]',
     sealedLabel: 'SEALED: Partitions 01, 03–05',
     curvature: -36,
@@ -61,9 +69,11 @@ const HERO_RECEIVER_NODES: HeroReceiverNode[] = [
   },
   {
     id: 'hotel',
-    label: 'Hotel Room',
+    label: 'Hotel Suite',
     sublabel: 'Suite #402 Matter Hub',
     partitionCode: 'Partition 03',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     unlockedLabel: 'UNLOCKED: Partition 03 [Hospitality]',
     sealedLabel: 'SEALED: Partitions 01–02, 04–05',
     curvature: -36,
@@ -144,7 +154,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
               aria-hidden="true"
             />
             <span className="truncate sm:whitespace-normal">
-              UK INNOVATOR ARCHITECTURE · ZERO CLOUD STORAGE · HARDWARE-ANCHORED IDENTITY
+              UK INNOVATOR ARCHITECTURE · ON-DEVICE ENCRYPTED VAULT · ZERO THIRD-PARTY DATA RETENTION
             </span>
             <span className="pk-cta-arrow shrink-0 text-[#FF6B00]" aria-hidden="true">
               <ArrowRight size={13} strokeWidth={2.25} />
@@ -156,7 +166,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
           </h1>
 
           <p className="pk-scaled-body mt-5 max-w-xl text-[#334155]">
-            PersonaKey stores your encrypted preferences and emergency directives inside your physical key—never in the cloud—and unlocks only the authorised slice at any workplace, vehicle, hotel, kiosk, or NHS receiver.
+            PersonaKey holds your preferences in an on-device encrypted vault with selective disclosure and zero third-party data retention—unlocking only the authorised slice at Year-1 UK workplaces today and Phase 2–3 partner venues next, with optional encrypted backup in PersonaKey Plus (£5.99/mo).
           </p>
 
           {/* Primary & Secondary CTAs */}
@@ -185,15 +195,15 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
           </div>
 
           {/* Crisp Unboxed Technical Trust Line */}
-          <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[#E2E8F0] pt-5  text-[11px] font-medium text-[#64748B]">
+          <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[#E2E8F0] pt-5 text-[11px] font-medium text-[#64748B]">
             <span className="inline-flex items-center gap-1.5 text-[#090D16]">
               <Lock size={12} className="text-[#00A896]" aria-hidden="true" />
-              AES-256 On-Key Enclave
+              On-Device Encrypted Vault
             </span>
             <span aria-hidden="true">·</span>
-            <span>Zero Cloud Accounts</span>
+            <span>Selective Disclosure</span>
             <span aria-hidden="true">·</span>
-            <span>0 Bytes Retained After Exit</span>
+            <span>Zero Third-Party Data Retention</span>
           </div>
         </motion.div>
 
@@ -207,7 +217,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
           <div className="overflow-hidden rounded-lg border border-[#1E293B] bg-[#090D16]">
             {/* Live Hardware Header Bar */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1E293B] bg-[#090D16] px-4 py-3 sm:px-5">
-              <div className="flex items-center gap-2  text-[11px] font-semibold tracking-[0.04em] text-[#FFFFFF]">
+              <div className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.04em] text-[#FFFFFF]">
                 <span
                   className="inline-flex h-4 w-4 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
                   aria-hidden="true"
@@ -216,8 +226,8 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                 </span>
                 <span>PERSONAKEY VAULT v2.4</span>
               </div>
-              <span className=" text-[10px] font-semibold tracking-[0.04em] text-[#00A896]">
-                0 BYTES IN CLOUD · OFFLINE NFC/BLE
+              <span className="text-[10px] font-semibold tracking-[0.04em] text-[#00A896] tabular-nums">
+                ON-DEVICE VAULT · 0 BYTES RETAINED BY RECEIVERS
               </span>
             </div>
 
@@ -285,6 +295,15 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                           <p className="mt-0.5 text-[11px] text-[#94A3B8]">
                             {node.sublabel}
                           </p>
+                          <span
+                            className={`mt-2 inline-block rounded-sm border px-1.5 py-0.5 text-[9px] font-semibold tracking-[0.03em] ${
+                              node.isMvp
+                                ? 'border-[#00A896] bg-[#090D16] text-[#00A896]'
+                                : 'border-[#334155] bg-[#090D16] text-[#CBD5E1]'
+                            }`}
+                          >
+                            {node.phaseTag}
+                          </span>
                         </div>
                       </button>
                     );
@@ -429,6 +448,15 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                           <p className="mt-0.5 text-[11px] text-[#94A3B8]">
                             {node.sublabel}
                           </p>
+                          <span
+                            className={`mt-2 inline-block rounded-sm border px-1.5 py-0.5 text-[9px] font-semibold tracking-[0.03em] ${
+                              node.isMvp
+                                ? 'border-[#00A896] bg-[#090D16] text-[#00A896]'
+                                : 'border-[#334155] bg-[#090D16] text-[#CBD5E1]'
+                            }`}
+                          >
+                            {node.phaseTag}
+                          </span>
                         </div>
                       </button>
                     );

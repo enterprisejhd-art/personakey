@@ -131,6 +131,10 @@ export interface ReceiverScenario {
   environmentType: string;
   verifiedCredential: string;
   unlocksPartition: PartitionId;
+  isMvp: boolean;
+  phaseTag:
+    | 'Year-1 Pilot MVP (Available Now)'
+    | 'Phase 2–3 Partner Ecosystem Preview';
   summary: string;
 }
 
@@ -142,16 +146,20 @@ export const RECEIVER_SCENARIOS: ReceiverScenario[] = [
     environmentType: 'Paramedic Clinical Triage Tablet',
     verifiedCredential: 'NHS_RESPONDER_UK',
     unlocksPartition: 'emergency',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     summary:
       'Unlocks ONLY Blood Group, Severe Allergies, Next-of-Kin, and BSL / Non-Verbal communication alert.',
   },
   {
     id: 'coworking-desk',
-    tabLabel: '2. Coworking Hot-Desk',
-    title: 'Coworking Hot-Desk',
+    tabLabel: '2. Coworking Hot-Desk & Inclusive Workplace',
+    title: 'Coworking Hot-Desk & Inclusive Workplace',
     environmentType: 'Shared Windows / Mac Workstation',
     verifiedCredential: 'WORKPLACE_DESK_04',
     unlocksPartition: 'workplace',
+    isMvp: true,
+    phaseTag: 'Year-1 Pilot MVP (Available Now)',
     summary:
       'Unlocks text zoom, high-contrast theme, language, and standing desk height; seals medical, EV, and hotel data.',
   },
@@ -162,6 +170,8 @@ export const RECEIVER_SCENARIOS: ReceiverScenario[] = [
     environmentType: 'Fleet EV Cabin Console',
     verifiedCredential: 'FLEET_EV_B12',
     unlocksPartition: 'mobility',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     summary:
       'Unlocks seat & lumbar calibration, cabin climate, regen braking, and voice-nav cues.',
   },
@@ -172,6 +182,8 @@ export const RECEIVER_SCENARIOS: ReceiverScenario[] = [
     environmentType: 'Room #402 Matter Control Hub',
     verifiedCredential: 'SUITE_HUB_402',
     unlocksPartition: 'hospitality',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     summary:
       'Unlocks warm lighting Kelvin, sleep climate, TV subtitles, and hypoallergenic bedding.',
   },
@@ -182,6 +194,8 @@ export const RECEIVER_SCENARIOS: ReceiverScenario[] = [
     environmentType: 'Public Self-Service Terminal',
     verifiedCredential: 'PUBLIC_KIOSK_07',
     unlocksPartition: 'public',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     summary:
       'Unlocks high-contrast large touch targets, audio-assist readout, and extended session timeout.',
   },
@@ -192,6 +206,8 @@ export const RECEIVER_SCENARIOS: ReceiverScenario[] = [
     environmentType: 'Adaptive Gym Console',
     verifiedCredential: 'STUDIO_CONSOLE_02',
     unlocksPartition: 'public',
+    isMvp: false,
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     summary:
       'Unlocks adaptive machine preset, target heart-rate zone, and high-visibility console typography.',
   },

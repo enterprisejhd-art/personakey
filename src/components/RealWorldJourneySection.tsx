@@ -198,9 +198,9 @@ export function RealWorldJourneySection({
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5  text-[11px] font-medium text-[#090D16]">
+          <div className="inline-flex items-center gap-2 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 text-[11px] font-semibold text-[#090D16]">
             <WifiOff size={13} className="text-[#00A896]" aria-hidden="true" />
-            Offline Hardware-to-Receiver · 0 Cloud Sync
+            On-Device Encrypted Vault · Zero Third-Party Data Retention
           </div>
         </div>
 
@@ -329,9 +329,14 @@ export function RealWorldJourneySection({
                   </div>
                 </div>
 
-                <div className="mt-3 flex items-center gap-2 rounded-md border border-[#00A896] bg-[#090D16] px-3 py-2  text-[10px] font-semibold text-[#FFFFFF]">
-                  <Lock size={12} className="shrink-0 text-[#FF6B00]" aria-hidden="true" />
-                  <span>ZERO CLOUD DEPENDENCY · 100% ON-DEVICE VAULT</span>
+                <div className="mt-3 rounded-md border border-[#00A896] bg-[#090D16] px-3 py-2">
+                  <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.06em] text-[#FFFFFF]">
+                    <Lock size={12} className="shrink-0 text-[#FF6B00]" aria-hidden="true" />
+                    <span>ON-DEVICE ENCRYPTED VAULT · SELECTIVE DISCLOSURE · ZERO THIRD-PARTY RETENTION</span>
+                  </div>
+                  <p className="mt-1 text-[10px] text-[#CBD5E1]">
+                    Primary vault lives on your device; optional end-to-end encrypted backup available in PersonaKey Plus (£5.99/mo).
+                  </p>
                 </div>
               </div>
 
@@ -707,12 +712,21 @@ export function RealWorldJourneySection({
                     )}
                     <div className="flex w-full items-center justify-between gap-2">
                       <ScenarioIcon id={scenario.id} isSelected={isSelected} />
-                      <span className=" text-[10px] text-[#94A3B8]">
+                      <span className="text-[10px] font-medium text-[#94A3B8]">
                         {scenario.verifiedCredential}
                       </span>
                     </div>
                     <span className="mt-2 text-xs font-semibold text-[#FFFFFF]">
                       {scenario.tabLabel}
+                    </span>
+                    <span
+                      className={`mt-2 inline-flex rounded-sm border px-1.5 py-0.5 text-[9px] font-semibold tracking-[0.03em] ${
+                        scenario.isMvp
+                          ? 'border-[#00A896] bg-[#090D16] text-[#00A896]'
+                          : 'border-[#334155] bg-[#090D16] text-[#CBD5E1]'
+                      }`}
+                    >
+                      {scenario.phaseTag}
                     </span>
                   </button>
                 );
@@ -729,7 +743,16 @@ export function RealWorldJourneySection({
                       <span className="text-sm font-semibold text-[#FFFFFF]">
                         {activeScenario.title}
                       </span>
-                      <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#090D16] px-2 py-0.5  text-[10px] font-semibold text-[#FFFFFF]">
+                      <span
+                        className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-semibold ${
+                          activeScenario.isMvp
+                            ? 'border-[#00A896] bg-[#00A896] text-[#FFFFFF]'
+                            : 'border-[#334155] bg-[#090D16] text-[#CBD5E1]'
+                        }`}
+                      >
+                        {activeScenario.phaseTag}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#090D16] px-2 py-0.5 text-[10px] font-semibold text-[#FFFFFF]">
                         <ShieldCheck size={11} className="text-[#00A896]" aria-hidden="true" />
                         {activeScenario.verifiedCredential}
                       </span>

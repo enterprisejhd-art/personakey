@@ -117,12 +117,12 @@ const COLUMNS: {
   >;
   label: string;
 }[] = [
-  { key: 'zeroCloudStorage', label: 'Zero Cloud Storage' },
+  { key: 'zeroCloudStorage', label: 'On-Device Encrypted Vault' },
   { key: 'crossVenue', label: 'Cross-OS & Cross-Venue' },
   { key: 'userOwnedVault', label: 'User-Owned Hardware Vault' },
   { key: 'selectiveDisclosure', label: 'Selective Partition Disclosure' },
   { key: 'emergencyReady', label: 'Emergency Directives Ready' },
-  { key: 'autoPurge', label: 'Auto-Purge on Departure' },
+  { key: 'autoPurge', label: 'Zero Third-Party Retention' },
 ];
 
 function StatusBadge({ status }: { status: MatrixStatus }) {

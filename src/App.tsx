@@ -31,7 +31,7 @@ export function App() {
   const [activeModal, setActiveModal] = useState<ActiveModal>(null);
 
   const [vault, setVault] = useState<KeyVaultData>(DEFAULT_KEY_VAULT);
-  const [scenarioId, setScenarioId] = useState<ScenarioId>('nhs-triage');
+  const [scenarioId, setScenarioId] = useState<ScenarioId>('coworking-desk');
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {

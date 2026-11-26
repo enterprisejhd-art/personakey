@@ -9,6 +9,11 @@ import {
 interface SolutionTab {
   id: PilotSectorId;
   label: string;
+  isMvp: boolean;
+  phaseShort: string;
+  phaseTag:
+    | 'Year-1 Pilot MVP (Available Now)'
+    | 'Phase 2–3 Partner Ecosystem Preview';
   gdprBadge: string;
   headline: string;
   intro: string;
@@ -21,8 +26,11 @@ interface SolutionTab {
 const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'coworking',
-    label: 'Coworking & Enterprise',
-    gdprBadge: 'UK GDPR: 0 HR Health Records Stored',
+    label: 'Coworking & Inclusive Workplace',
+    isMvp: true,
+    phaseShort: 'Year-1 MVP',
+    phaseTag: 'Year-1 Pilot MVP (Available Now)',
+    gdprBadge: 'UK GDPR: Zero Third-Party Data Retention',
     headline: 'Instant hot-desk accessibility without storing employee health records.',
     intro:
       'Staff and flex members tap a physical key at any shared workstation to apply text zoom, contrast, language, and desk height—while eliminating UK GDPR special-category storage liability.',
@@ -47,6 +55,9 @@ const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'nhs',
     label: 'NHS & Emergency Care',
+    isMvp: false,
+    phaseShort: 'Phase 2–3',
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     gdprBadge: 'UK GDPR: Ephemeral Clinical Triage Only',
     headline: 'Offline triage directives surfaced in one tap—even without phone battery.',
     intro:
@@ -72,6 +83,9 @@ const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'mobility',
     label: 'Mobility & EV Fleets',
+    isMvp: false,
+    phaseShort: 'Phase 2–3',
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     gdprBadge: 'UK GDPR: Zero Driver Profile Retention',
     headline: 'Instant cabin personalisation with zero forced rental apps or cloud accounts.',
     intro:
@@ -97,6 +111,9 @@ const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'hospitality',
     label: 'Hospitality & Public Kiosks',
+    isMvp: false,
+    phaseShort: 'Phase 2–3',
+    phaseTag: 'Phase 2–3 Partner Ecosystem Preview',
     gdprBadge: 'UK GDPR: Zero Guest CRM Profile Exposure',
     headline: 'Tailored suites and accessible public terminals with zero CRM breach risk.',
     intro:
@@ -164,13 +181,22 @@ export function SolutionsSection() {
                 aria-selected={isSelected}
                 aria-controls={`tabpanel-${tab.id}`}
                 onClick={() => setActiveTabId(tab.id)}
-                className={`pk-focus-ring -mb-px cursor-pointer border-b-2 px-4 py-3 text-left text-sm font-medium transition-colors sm:whitespace-nowrap ${
+                className={`pk-focus-ring -mb-px inline-flex cursor-pointer items-center gap-2 border-b-2 px-4 py-3 text-left text-sm font-medium transition-colors sm:whitespace-nowrap ${
                   isSelected
                     ? 'border-[#00A896] font-semibold text-[#090D16]'
                     : 'border-transparent text-[#64748B] hover:border-[#E2E8F0] hover:text-[#090D16]'
                 }`}
               >
-                {tab.label}
+                <span>{tab.label}</span>
+                <span
+                  className={`rounded-sm border px-1.5 py-0.5 text-[10px] font-semibold ${
+                    tab.isMvp
+                      ? 'border-[#00A896] bg-[#FFFFFF] text-[#00A896]'
+                      : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B]'
+                  }`}
+                >
+                  {tab.phaseShort}
+                </span>
               </button>
             );
           })}
@@ -193,8 +219,19 @@ export function SolutionsSection() {
                 exit={shouldReduceMotion ? undefined : { opacity: 0, y: -4 }}
                 transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="mb-3 inline-flex items-center rounded-md border border-[#00A896] bg-[#FFFFFF] px-2.5 py-1  text-[10px] font-semibold text-[#090D16]">
-                  {activeTab.gdprBadge}
+                <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <span
+                    className={`inline-flex items-center rounded-md border px-2.5 py-1 text-[10px] font-semibold ${
+                      activeTab.isMvp
+                        ? 'border-[#00A896] bg-[#00A896] text-[#FFFFFF]'
+                        : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#334155]'
+                    }`}
+                  >
+                    {activeTab.phaseTag}
+                  </span>
+                  <span className="inline-flex items-center rounded-md border border-[#00A896] bg-[#FFFFFF] px-2.5 py-1 text-[10px] font-semibold text-[#090D16]">
+                    {activeTab.gdprBadge}
+                  </span>
                 </div>
                 <h3 className="pk-scaled-subheading font-display font-bold text-[#090D16]">
                   {activeTab.headline}

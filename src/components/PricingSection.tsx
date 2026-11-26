@@ -132,8 +132,8 @@ export function PricingSection({
                     / month
                   </span>
                 </div>
-                <p className="mt-2.5  text-[11px] text-[var(--pk-muted)]">
-                  Multi-context sync &amp; encrypted preference backup
+                <p className="mt-2.5 text-[11px] text-[var(--pk-muted)]">
+                  Multi-context profiles &amp; optional end-to-end encrypted backup
                 </p>
               </div>
 
@@ -154,7 +154,7 @@ export function PricingSection({
                     className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
-                  <span>Encrypted cloud backup</span>
+                  <span>Optional encrypted backup (user-held AES-256 keys)</span>
                 </li>
                 <li className="flex items-start gap-2.5 text-sm text-[var(--pk-text)]">
                   <Check
@@ -194,9 +194,14 @@ export function PricingSection({
           {/* Card 3: Workplace & Coworking Licence */}
           <article className="pk-card-hover-orange flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#FF6B00] bg-[var(--pk-surface)] p-6 sm:p-7">
             <div>
-              <p className=" text-[11px] font-semibold tracking-[0.04em] text-[var(--pk-heading)]">
-                B2B PILOT &amp; SCALE
-              </p>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="text-[11px] font-semibold tracking-[0.04em] text-[var(--pk-heading)]">
+                  B2B PILOT &amp; SCALE
+                </p>
+                <span className="rounded-sm border border-[#00A896] bg-[#FFFFFF] px-2 py-0.5 text-[10px] font-semibold text-[#00A896]">
+                  Year-1 Pilot MVP (Available Now)
+                </span>
+              </div>
               <h3 className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[var(--pk-heading)]">
                 Workplace Licence
               </h3>

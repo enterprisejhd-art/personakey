@@ -214,7 +214,7 @@ export function MarketOpportunitySection({
                 <li className="flex items-start gap-2.5 text-sm text-[#334155]">
                   <Check size={16} className="mt-0.5 shrink-0 text-[#00A896]" aria-hidden="true" />
                   <span>
-                    <strong className="font-semibold text-[#090D16]">Optional £5.99/mo PersonaKey Plus</strong> — encrypted offline backup &amp; multi-profile management.
+                    <strong className="font-semibold text-[#090D16]">Optional £5.99/mo PersonaKey Plus</strong> — optional encrypted backup (user-held keys) &amp; multi-profile management.
                   </span>
                 </li>
               </ul>

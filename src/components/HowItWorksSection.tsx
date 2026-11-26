@@ -36,11 +36,11 @@ interface CredentialPreset {
 const HANDSHAKE_STAGES: HandshakeStage[] = [
   {
     index: '01',
-    label: '01 · On-Key Encrypted Vault',
-    title: 'On-Key Encrypted Vault',
+    label: '01 · On-Device Encrypted Vault',
+    title: 'On-Device Encrypted Vault',
     description:
-      '5 isolated partitions stored physically inside the PersonaKey secure element (0 Bytes in Cloud).',
-    metricBadge: '0 Bytes in Cloud',
+      '5 isolated partitions stored locally inside the PersonaKey secure element—with optional user-encrypted backup in PersonaKey Plus.',
+    metricBadge: 'On-Device Vault',
     icon: 'vault',
   },
   {
@@ -375,7 +375,7 @@ export function HowItWorksSection() {
               </div>
 
               <span className="rounded-md border border-[#1E293B] bg-[#090D16] px-3 py-1  text-[11px] font-semibold text-[#00A896]">
-                {activeStep === 0 && 'ALL 5 PARTITIONS SEALED · 0 BYTES IN CLOUD'}
+                {activeStep === 0 && 'ALL 5 PARTITIONS SEALED · ON-DEVICE ENCRYPTED VAULT'}
                 {activeStep === 1 && `VERIFYING ROLE CERT ← ${credentialId}`}
                 {activeStep === 2 &&
                   `TRANSMITTING ${activePreset.authorisedPartitionName.toUpperCase()} ONLY`}

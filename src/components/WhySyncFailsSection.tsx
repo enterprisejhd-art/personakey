@@ -591,10 +591,10 @@ export function WhySyncFailsSection() {
             <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-[#1E293B] pt-3  text-[11px] text-[#CBD5E1]">
               <span className="inline-flex items-center gap-1.5">
                 <ShieldCheck size={13} className="text-[#00A896]" aria-hidden="true" />
-                Zero Cloud Accounts · Zero Vendor Lock-In
+                On-Device Encrypted Vault · Selective Disclosure
               </span>
               <span className="text-[#00A896] font-semibold">
-                0 Bytes Retained After Departure
+                Zero Third-Party Data Retention (0 Bytes Retained)
               </span>
             </div>
           </div>
