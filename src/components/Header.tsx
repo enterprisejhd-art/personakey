@@ -28,7 +28,7 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--pk-border)] bg-[var(--pk-surface)]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:gap-8 lg:px-8">
-        {/* Left: Minimal geometric PersonaKey wordmark + subtle monospace tag */}
+        {/* Left: Minimal geometric PersonaKey wordmark + subtle enterprise tag */}
         <div className="flex shrink-0 items-center gap-3">
           <a
             href="#hero"
@@ -67,7 +67,7 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
             </span>
           </a>
 
-          <span className="hidden shrink-0 border-l border-[var(--pk-border)] pl-3 font-mono text-[11px] font-medium tracking-[0.06em] text-[var(--pk-muted)] whitespace-nowrap sm:inline-block">
+          <span className="hidden shrink-0 border-l border-[var(--pk-border)] pl-3  text-[11px] font-medium tracking-[0.06em] text-[var(--pk-muted)] whitespace-nowrap sm:inline-block">
             PORTABLE IDENTITY
           </span>
         </div>
@@ -91,7 +91,7 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
         {/* Right: Live Accessibility Preview toggle pill + Book a Pilot CTA */}
         <div className="flex shrink-0 items-center gap-3">
           <div className="hidden shrink-0 items-center gap-2 lg:flex">
-            <span className="hidden shrink-0 font-mono text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)] whitespace-nowrap xl:inline">
+            <span className="hidden shrink-0  text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)] whitespace-nowrap xl:inline">
               Live Accessibility Preview
             </span>
             <div
@@ -166,7 +166,7 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
           </nav>
 
           <div className="mt-4 border-t border-[var(--pk-border)] pt-4">
-            <p className="mb-2 font-mono text-xs font-medium tracking-[0.04em] text-[var(--pk-muted)]">
+            <p className="mb-2  text-xs font-medium tracking-[0.04em] text-[var(--pk-muted)]">
               Live Accessibility Preview
             </p>
             <div

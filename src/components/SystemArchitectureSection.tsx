@@ -86,7 +86,7 @@ export function SystemArchitectureSection() {
         {/* Section Header */}
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
+            <p className=" text-xs font-semibold tracking-[0.05em] text-[#00A896]">
               3-PART SYSTEM ARCHITECTURE
             </p>
             <h2 className="pk-scaled-heading font-display mt-2 font-bold text-balance text-[#090D16]">
@@ -97,7 +97,7 @@ export function SystemArchitectureSection() {
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface)] px-3 py-1.5 font-mono text-[11px] font-medium text-[#090D16]">
+          <div className="inline-flex items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface)] px-3 py-1.5  text-[11px] font-medium text-[#090D16]">
             <KeyRound size={13} className="text-[#00A896]" aria-hidden="true" />
             Hardware-to-Receiver · No Cloud Sync
           </div>
@@ -114,7 +114,7 @@ export function SystemArchitectureSection() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 border-b border-[var(--pk-border)] pb-3">
-                    <span className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[#64748B]">
+                    <span className=" text-[11px] font-semibold tracking-[0.04em] text-[#64748B]">
                       {part.step}
                     </span>
                     <PartBadgeIcon kind={part.kind} />
@@ -123,7 +123,7 @@ export function SystemArchitectureSection() {
                   <h3 className="font-display mt-4 text-base font-bold tracking-[-0.02em] text-[#090D16]">
                     {part.title}
                   </h3>
-                  <p className="mt-0.5 font-mono text-xs font-medium text-[#334155]">
+                  <p className="mt-0.5  text-xs font-medium text-[#334155]">
                     {part.subtitle}
                   </p>
 
@@ -144,7 +144,7 @@ export function SystemArchitectureSection() {
                 </div>
 
                 <div className="mt-5 border-t border-[var(--pk-border)] pt-3">
-                  <span className="font-mono text-[11px] font-semibold text-[#090D16]">
+                  <span className=" text-[11px] font-semibold text-[#090D16]">
                     {part.guarantee}
                   </span>
                 </div>

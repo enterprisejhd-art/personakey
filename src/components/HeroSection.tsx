@@ -137,7 +137,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
           <button
             type="button"
             onClick={() => scrollToSection('how-it-works')}
-            className="group pk-focus-ring pk-card-hover-orange inline-flex max-w-full cursor-pointer items-center gap-2 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-1.5 text-left font-mono text-[11px] font-semibold tracking-[0.04em] text-[#090D16]"
+            className="group pk-focus-ring pk-card-hover-orange inline-flex max-w-full cursor-pointer items-center gap-2 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-1.5 text-left  text-[11px] font-semibold tracking-[0.04em] text-[#090D16]"
           >
             <span
               className="inline-block h-2 w-2 shrink-0 rounded-xs bg-[#FF6B00]"
@@ -185,7 +185,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
           </div>
 
           {/* Crisp Unboxed Technical Trust Line */}
-          <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[#E2E8F0] pt-5 font-mono text-[11px] font-medium text-[#64748B]">
+          <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[#E2E8F0] pt-5  text-[11px] font-medium text-[#64748B]">
             <span className="inline-flex items-center gap-1.5 text-[#090D16]">
               <Lock size={12} className="text-[#00A896]" aria-hidden="true" />
               AES-256 On-Key Enclave
@@ -207,7 +207,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
           <div className="overflow-hidden rounded-lg border border-[#1E293B] bg-[#090D16]">
             {/* Live Hardware Header Bar */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1E293B] bg-[#090D16] px-4 py-3 sm:px-5">
-              <div className="flex items-center gap-2 font-mono text-[11px] font-semibold tracking-[0.04em] text-[#FFFFFF]">
+              <div className="flex items-center gap-2  text-[11px] font-semibold tracking-[0.04em] text-[#FFFFFF]">
                 <span
                   className="inline-flex h-4 w-4 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
                   aria-hidden="true"
@@ -216,7 +216,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                 </span>
                 <span>PERSONAKEY VAULT v2.4</span>
               </div>
-              <span className="font-mono text-[10px] font-semibold tracking-[0.04em] text-[#00A896]">
+              <span className=" text-[10px] font-semibold tracking-[0.04em] text-[#00A896]">
                 0 BYTES IN CLOUD · OFFLINE NFC/BLE
               </span>
             </div>
@@ -271,7 +271,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                         <div className="flex w-full items-center justify-between gap-2">
                           <ReceiverNodeIcon icon={node.icon} isActive={isActive} />
                           <span
-                            className={`font-mono text-[10px] font-semibold ${
+                            className={` text-[10px] font-semibold ${
                               isActive ? 'text-[#FF6B00]' : 'text-[#94A3B8]'
                             }`}
                           >
@@ -372,13 +372,13 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                     </svg>
 
                     <div className="min-w-0">
-                      <p className="font-mono text-[10px] font-semibold tracking-[0.04em] text-[#FF6B00]">
+                      <p className=" text-[10px] font-semibold tracking-[0.04em] text-[#FF6B00]">
                         PERSONAKEY #PK-409
                       </p>
                       <p className="mt-0.5 text-xs font-semibold text-[#FFFFFF]">
                         Obsidian Hardware Vault
                       </p>
-                      <p className="mt-0.5 font-mono text-[10px] text-[#94A3B8]">
+                      <p className="mt-0.5  text-[10px] text-[#94A3B8]">
                         5 Isolated Partitions
                       </p>
                     </div>
@@ -415,7 +415,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                         <div className="flex w-full items-center justify-between gap-2">
                           <ReceiverNodeIcon icon={node.icon} isActive={isActive} />
                           <span
-                            className={`font-mono text-[10px] font-semibold ${
+                            className={` text-[10px] font-semibold ${
                               isActive ? 'text-[#FF6B00]' : 'text-[#94A3B8]'
                             }`}
                           >
@@ -446,7 +446,7 @@ export function HeroSection({ onBookPilot }: HeroSectionProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={shouldReduceMotion ? undefined : { opacity: 0, y: -4 }}
                   transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px]"
+                  className="flex flex-wrap items-center justify-between gap-2  text-[11px]"
                 >
                   <span className="inline-flex items-center gap-2 font-semibold text-[#00A896]">
                     <ShieldCheck size={14} className="shrink-0" aria-hidden="true" />

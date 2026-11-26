@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Building2, Check, Nfc, UserCheck } from 'lucide-react';
+import { animate, useInView, useReducedMotion } from 'motion/react';
 
 interface MarketOpportunitySectionProps {
   onBookPilot: () => void;
@@ -7,37 +9,115 @@ interface MarketOpportunitySectionProps {
 }
 
 interface MarketDriver {
-  metric: string;
+  id: string;
+  target: number;
+  decimals: number;
+  suffix: string;
+  formattedFinal: string;
+  label: string;
   description: string;
   source: string;
 }
 
 const UK_MARKET_EVIDENCE: MarketDriver[] = [
   {
-    metric: '10.4 Million',
+    id: 'disabled-adults',
+    target: 10.4,
+    decimals: 1,
+    suffix: 'M',
+    formattedFinal: '10.4M',
+    label: 'Working-Age Accessibility',
     description:
-      'UK working-age disabled adults needing consistent accessibility across work and public spaces',
-    source: 'Source: DWP',
+      'UK working-age disabled adults needing portable accessibility across work and public spaces',
+    source: 'DWP',
   },
   {
-    metric: '4,415 Locations',
+    id: 'coworking-spaces',
+    target: 4415,
+    decimals: 0,
+    suffix: '',
+    formattedFinal: '4,415',
+    label: 'Coworking & Flex Desks',
     description:
       'UK flexible & coworking spaces with daily hot-desk turnover',
-    source: 'Source: CoworkingCafe',
+    source: 'CoworkingCafe',
   },
   {
-    metric: '1.42 Million',
+    id: 'hybrid-businesses',
+    target: 1.42,
+    decimals: 2,
+    suffix: 'M',
+    formattedFinal: '1.42M',
+    label: 'Hybrid Employing Firms',
     description:
       'UK employing businesses adopting hybrid work models',
-    source: 'Source: DBT',
+    source: 'DBT',
   },
   {
-    metric: '176,685 Businesses',
+    id: 'hospitality-operators',
+    target: 176685,
+    decimals: 0,
+    suffix: '',
+    formattedFinal: '176,685',
+    label: 'Hospitality & Venues',
     description:
-      'UK hospitality & venue operators seeking contactless guest personalisation',
-    source: 'Source: ONS / House of Commons Library',
+      'UK hospitality operators seeking contactless guest personalisation',
+    source: 'ONS',
   },
 ];
+
+function formatMetricValue(value: number, decimals: number, suffix: string): string {
+  if (decimals > 0) {
+    return `${value.toFixed(decimals)}${suffix}`;
+  }
+  return `${Math.round(value).toLocaleString('en-GB')}${suffix}`;
+}
+
+function AnimatedRollupCounter({ driver }: { driver: MarketDriver }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.35 });
+  const shouldReduceMotion = useReducedMotion();
+  const [display, setDisplay] = useState<string>(driver.formattedFinal);
+
+  useEffect(() => {
+    if (!isInView || shouldReduceMotion) {
+      setDisplay(driver.formattedFinal);
+      return;
+    }
+
+    const controls = animate(0, driver.target, {
+      duration: 1.15,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (latest) => {
+        setDisplay(formatMetricValue(latest, driver.decimals, driver.suffix));
+      },
+      onComplete: () => {
+        setDisplay(driver.formattedFinal);
+      },
+    });
+
+    return () => controls.stop();
+  }, [
+    driver.decimals,
+    driver.formattedFinal,
+    driver.suffix,
+    driver.target,
+    isInView,
+    shouldReduceMotion,
+  ]);
+
+  return (
+    <div ref={ref} className="inline-block">
+      <p
+        className="font-display text-3xl font-extrabold tracking-[-0.03em] text-[#090D16] tabular-nums sm:text-4xl"
+        aria-label={driver.formattedFinal}
+      >
+        {display}
+      </p>
+      <div className="mt-2 h-[3px] w-14 bg-[#00A896]" aria-hidden="true" />
+    </div>
+  );
+}
 
 export function MarketOpportunitySection({
   onBookPilot,
@@ -47,28 +127,67 @@ export function MarketOpportunitySection({
   return (
     <section
       id="market-opportunity"
-      className="border-b border-[var(--pk-border)] bg-[var(--pk-bg)] py-14 sm:py-16"
+      className="border-b border-[#E2E8F0] bg-[#FFFFFF] py-14 sm:py-18"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="font-mono text-xs font-medium tracking-[0.04em] text-[var(--pk-muted)]">
-            COMMERCIAL ECOSYSTEM &amp; UK MARKET OPPORTUNITY
-          </p>
-          <h2 className="pk-scaled-heading mt-2.5 font-semibold text-balance text-[var(--pk-heading)]">
-            Two-sided commercial model built for UK workplaces and public venues.
-          </h2>
-          <p className="pk-scaled-body mt-3 text-[var(--pk-text)]">
-            Individuals own their hardware key outright while organisations licence receivers to eliminate manual desk setup and UK GDPR data-storage liability.
-          </p>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-3xl">
+            <p className=" text-xs font-semibold tracking-[0.05em] text-[#00A896]">
+              UK MARKET SCALE &amp; COMMERCIAL ECOSYSTEM
+            </p>
+            <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[#090D16]">
+              Two-sided commercial model built for UK workplaces and public venues.
+            </h2>
+            <p className="pk-scaled-body mt-3 text-[#334155]">
+              Individuals own their hardware key outright while organisations licence receivers to eliminate manual desk setup and UK GDPR data-storage liability.
+            </p>
+          </div>
+
+          <span className="inline-flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1.5  text-[11px] font-medium text-[#090D16]">
+            Verified UK Official Datasets
+          </span>
         </div>
 
-        {/* 1. Dual-Sided Value Proposition (2-Column Executive Layout) */}
+        {/* 1. Netlify-Style Animated UK Market Scale Strip */}
+        <div className="mt-8 grid grid-cols-1 divide-y divide-[#E2E8F0] rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+          {UK_MARKET_EVIDENCE.map((driver, index) => (
+            <article
+              key={driver.id}
+              className={`pk-card-hover flex flex-col justify-between p-6 ${
+                index >= 2 ? 'sm:border-t sm:border-[#E2E8F0] lg:border-t-0' : ''
+              } ${index % 2 === 1 ? 'sm:border-l sm:border-[#E2E8F0] lg:border-l-0' : ''}`}
+            >
+              <div>
+                <p className=" text-[10px] font-semibold tracking-[0.04em] text-[#64748B]">
+                  {driver.label.toUpperCase()}
+                </p>
+                <div className="mt-2.5">
+                  <AnimatedRollupCounter driver={driver} />
+                </div>
+                <p className="pk-scaled-small mt-3.5 text-[#334155]">
+                  {driver.description}
+                </p>
+              </div>
+
+              <div className="mt-5 flex items-center justify-between border-t border-[#E2E8F0] pt-3">
+                <span className=" text-[11px] font-semibold text-[#090D16]">
+                  Source: {driver.source}
+                </span>
+                <span className=" text-[10px] font-medium text-[#00A896]">
+                  UK DATA
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* 2. Dual-Sided Value Proposition (2-Column Executive Layout) */}
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch">
           {/* Left: For Individuals & Accessibility Users */}
-          <article className="pk-card-hover flex flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6">
+          <article className="pk-card-hover flex flex-col justify-between rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-6">
             <div>
-              <div className="flex items-center justify-between gap-2 border-b border-[var(--pk-border)] pb-3.5">
-                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[#090D16]">
+              <div className="flex items-center justify-between gap-2 border-b border-[#E2E8F0] pb-3.5">
+                <span className="inline-flex items-center gap-2  text-xs font-semibold text-[#090D16]">
                   <UserCheck size={15} className="text-[#00A896]" aria-hidden="true" />
                   FOR INDIVIDUALS &amp; ACCESSIBILITY USERS
                 </span>
@@ -85,7 +204,7 @@ export function MarketOpportunitySection({
                 Carry one key everywhere; protect medical and personal privacy; eliminate daily reconfiguration friction.
               </h3>
 
-              <ul className="mt-4 space-y-2.5 border-t border-[var(--pk-border)] pt-4">
+              <ul className="mt-4 space-y-2.5 border-t border-[#E2E8F0] pt-4">
                 <li className="flex items-start gap-2.5 text-sm text-[#334155]">
                   <Check size={16} className="mt-0.5 shrink-0 text-[#00A896]" aria-hidden="true" />
                   <span>
@@ -101,7 +220,7 @@ export function MarketOpportunitySection({
               </ul>
             </div>
 
-            <div className="mt-6 border-t border-[var(--pk-border)] pt-4">
+            <div className="mt-6 border-t border-[#E2E8F0] pt-4">
               <button
                 type="button"
                 onClick={onJoinBeta}
@@ -116,14 +235,14 @@ export function MarketOpportunitySection({
           </article>
 
           {/* Right: For Service Providers & Enterprises */}
-          <article className="pk-card-hover flex flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#00A896] bg-[var(--pk-surface)] p-6">
+          <article className="pk-card-hover flex flex-col justify-between rounded-lg border border-[#E2E8F0] border-t-2 border-t-[#00A896] bg-[#F8FAFC] p-6">
             <div>
-              <div className="flex items-center justify-between gap-2 border-b border-[var(--pk-border)] pb-3.5">
-                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[#090D16]">
+              <div className="flex items-center justify-between gap-2 border-b border-[#E2E8F0] pb-3.5">
+                <span className="inline-flex items-center gap-2  text-xs font-semibold text-[#090D16]">
                   <Building2 size={15} className="text-[#00A896]" aria-hidden="true" />
                   FOR SERVICE PROVIDERS &amp; ENTERPRISES
                 </span>
-                <span className="rounded-md border border-[#00A896] bg-[#F8FAFC] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#090D16]">
+                <span className="rounded-md border border-[#00A896] bg-[#FFFFFF] px-2 py-0.5  text-[10px] font-semibold text-[#090D16]">
                   B2B &amp; OEM
                 </span>
               </div>
@@ -132,7 +251,7 @@ export function MarketOpportunitySection({
                 Deploy PersonaKey Receivers to deliver instant accessibility and personalised experiences while reducing UK GDPR data-storage liability.
               </h3>
 
-              <ul className="mt-4 space-y-2.5 border-t border-[var(--pk-border)] pt-4">
+              <ul className="mt-4 space-y-2.5 border-t border-[#E2E8F0] pt-4">
                 <li className="flex items-start gap-2.5 text-sm text-[#334155]">
                   <Check size={16} className="mt-0.5 shrink-0 text-[#00A896]" aria-hidden="true" />
                   <span>
@@ -148,7 +267,7 @@ export function MarketOpportunitySection({
               </ul>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-2.5 border-t border-[var(--pk-border)] pt-4">
+            <div className="mt-6 flex flex-wrap items-center gap-2.5 border-t border-[#E2E8F0] pt-4">
               <button
                 type="button"
                 onClick={onBookPilot}
@@ -162,7 +281,7 @@ export function MarketOpportunitySection({
               <button
                 type="button"
                 onClick={onEnquireSdk}
-                className="group pk-focus-ring inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-md border border-[var(--pk-border)] bg-[#F8FAFC] px-4 py-2 text-xs font-semibold text-[#090D16] transition-colors hover:border-[#00A896]"
+                className="group pk-focus-ring inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2 text-xs font-semibold text-[#090D16] transition-colors hover:border-[#00A896]"
               >
                 <span>Deploy Provider Receivers</span>
                 <span className="pk-cta-arrow" aria-hidden="true">
@@ -171,31 +290,6 @@ export function MarketOpportunitySection({
               </button>
             </div>
           </article>
-        </div>
-
-        {/* 2. UK Market Evidence (4 Verified Metric Cards) */}
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {UK_MARKET_EVIDENCE.map((driver) => (
-            <article
-              key={driver.metric}
-              className="pk-card-hover flex flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#00A896] bg-[var(--pk-surface)] p-5"
-            >
-              <div>
-                <p className="font-display text-2xl font-bold tracking-[-0.03em] text-[#090D16] tabular-nums sm:text-3xl">
-                  {driver.metric}
-                </p>
-                <p className="pk-scaled-small mt-3 text-[#334155]">
-                  {driver.description}
-                </p>
-              </div>
-
-              <div className="mt-5 border-t border-[var(--pk-border)] pt-3">
-                <span className="font-mono text-[11px] font-medium text-[#64748B]">
-                  {driver.source}
-                </span>
-              </div>
-            </article>
-          ))}
         </div>
       </div>
     </section>

@@ -174,7 +174,7 @@ export function WorkplacePilotModal({
                 <Check size={15} strokeWidth={2.25} className="text-[#00A896]" aria-hidden="true" />
                 Pilot Request Logged
               </span>
-              <span className="font-mono text-xs font-medium text-[#090D16]">
+              <span className=" text-xs font-medium text-[#090D16]">
                 {submission.referenceId}
               </span>
             </div>
@@ -189,32 +189,32 @@ export function WorkplacePilotModal({
           {/* Request Summary */}
           <dl className="grid grid-cols-1 gap-3 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4 text-xs sm:grid-cols-2">
             <div>
-              <dt className="font-mono text-[11px] text-[#64748B]">WORK EMAIL</dt>
+              <dt className=" text-[11px] text-[#64748B]">WORK EMAIL</dt>
               <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.workEmail}
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] text-[#64748B]">ORGANISATION TYPE</dt>
+              <dt className=" text-[11px] text-[#64748B]">ORGANISATION TYPE</dt>
               <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.organisationType}
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] text-[#64748B]">SHARED DESKS</dt>
+              <dt className=" text-[11px] text-[#64748B]">SHARED DESKS</dt>
               <dd className="mt-0.5 font-medium text-[#090D16] tabular-nums">
                 {submission.approximateSharedDesks}
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] text-[#64748B]">PRIMARY OS</dt>
+              <dt className=" text-[11px] text-[#64748B]">PRIMARY OS</dt>
               <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.primaryOsEnvironment}
               </dd>
             </div>
             {submission.notes && (
               <div className="sm:col-span-2 border-t border-[#E2E8F0] pt-2.5">
-                <dt className="font-mono text-[11px] text-[#64748B]">NOTES</dt>
+                <dt className=" text-[11px] text-[#64748B]">NOTES</dt>
                 <dd className="mt-0.5 text-[#334155]">{submission.notes}</dd>
               </div>
             )}
@@ -222,14 +222,14 @@ export function WorkplacePilotModal({
 
           {/* 4-Week Controlled Pilot Onboarding Steps */}
           <div>
-            <h3 className="font-mono text-xs font-semibold tracking-[0.04em] text-[#090D16]">
+            <h3 className=" text-xs font-semibold tracking-[0.04em] text-[#090D16]">
               4-WEEK CONTROLLED PILOT ONBOARDING
             </h3>
             <ol className="mt-2.5 divide-y divide-[#E2E8F0] rounded-lg border border-[#E2E8F0] bg-[#F8FAFC]">
               {ONBOARDING_STEPS.map((item) => (
                 <li key={item.week} className="px-4 py-3">
                   <div className="flex items-baseline gap-2">
-                    <span className="font-mono text-[11px] font-semibold text-[#090D16]">
+                    <span className=" text-[11px] font-semibold text-[#090D16]">
                       {item.week}
                     </span>
                     <span className="text-xs font-semibold text-[#090D16]">
@@ -372,7 +372,7 @@ export function WorkplacePilotModal({
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => setSharedDesks(range)}
-                    className={`pk-focus-ring cursor-pointer rounded-md border px-3 py-2 font-mono text-xs font-medium transition-colors ${
+                    className={`pk-focus-ring cursor-pointer rounded-md border px-3 py-2  text-xs font-medium transition-colors ${
                       isSelected
                         ? 'border-[#090D16] bg-[#090D16] text-[#FFFFFF]'
                         : 'border-[#E2E8F0] bg-[#F8FAFC] text-[#334155] hover:border-[#090D16]'

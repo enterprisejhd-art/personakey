@@ -70,7 +70,7 @@ export function ComplianceTrustBar() {
               } ${index % 2 === 1 ? 'sm:border-l sm:border-[var(--pk-border)] lg:border-l-0' : ''}`}
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-[10px] font-semibold tracking-[0.04em] text-[#64748B]">
+                <span className=" text-[10px] font-semibold tracking-[0.04em] text-[#64748B]">
                   {pillar.code}
                 </span>
                 <PillarIcon type={pillar.icon} />

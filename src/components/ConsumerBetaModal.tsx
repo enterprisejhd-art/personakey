@@ -119,7 +119,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
                 <Check size={15} strokeWidth={2.25} className="text-[#00A896]" aria-hidden="true" />
                 Beta Cohort Spot Reserved
               </span>
-              <span className="font-mono text-xs font-medium text-[#090D16]">
+              <span className=" text-xs font-medium text-[#090D16]">
                 {submission.queueId}
               </span>
             </div>
@@ -132,13 +132,13 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
 
           <dl className="space-y-2.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4 text-xs">
             <div>
-              <dt className="font-mono text-[11px] text-[#64748B]">PRIMARY USE CASE</dt>
+              <dt className=" text-[11px] text-[#64748B]">PRIMARY USE CASE</dt>
               <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.useCase}
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] text-[#64748B]">
+              <dt className=" text-[11px] text-[#64748B]">
                 PREFERRED ACTIVATION
               </dt>
               <dd className="mt-0.5 font-medium text-[#090D16]">
@@ -146,7 +146,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] text-[#64748B]">DEVICES USED</dt>
+              <dt className=" text-[11px] text-[#64748B]">DEVICES USED</dt>
               <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.devices.join(' · ')}
               </dd>
@@ -159,7 +159,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
             match adaptor compatibility. PersonaKey never collects or stores
             medical diagnoses, health records, or passive location telemetry.
             Request removal at any time via{' '}
-            <span className="font-mono text-[#090D16]">hello@personakey.co.uk</span>.
+            <span className=" text-[#090D16]">hello@personakey.co.uk</span>.
           </div>
 
           <div className="flex justify-end border-t border-[#E2E8F0] pt-4">

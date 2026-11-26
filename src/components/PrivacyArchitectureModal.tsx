@@ -52,7 +52,7 @@ export function PrivacyArchitectureModal({
         <div className="divide-y divide-[#E2E8F0] rounded-lg border border-[#E2E8F0] bg-[#F8FAFC]">
           {PRIVACY_CONTROLS.map((control) => (
             <div key={control.code} className="p-4">
-              <p className="font-mono text-[11px] font-semibold text-[#00A896]">
+              <p className=" text-[11px] font-semibold text-[#00A896]">
                 {control.code}
               </p>
               <h3 className="mt-1 text-sm font-semibold text-[#090D16]">
@@ -66,7 +66,7 @@ export function PrivacyArchitectureModal({
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#E2E8F0] pt-4">
-          <span className="font-mono text-[11px] text-[#64748B]">
+          <span className=" text-[11px] text-[#64748B]">
             Data protection queries: hello@personakey.co.uk
           </span>
           <button

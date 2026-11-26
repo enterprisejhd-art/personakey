@@ -69,7 +69,7 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
           <button
             type="button"
             onClick={onOpenPrivacy}
-            className="pk-focus-ring cursor-pointer rounded-md border border-[#1E293B] bg-[#090D16] px-3 py-1.5 font-mono text-[11px] font-medium text-[#FFFFFF] transition-colors hover:border-[#00A896] hover:text-[#00A896] whitespace-nowrap"
+            className="pk-focus-ring cursor-pointer rounded-md border border-[#1E293B] bg-[#090D16] px-3 py-1.5  text-[11px] font-medium text-[#FFFFFF] transition-colors hover:border-[#00A896] hover:text-[#00A896] whitespace-nowrap"
           >
             Privacy Architecture
           </button>
@@ -79,7 +79,7 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
         <div className="flex flex-col items-start gap-1 text-xs lg:items-end">
           <a
             href="mailto:hello@personakey.co.uk"
-            className="pk-focus-ring rounded-md font-mono text-xs text-[#CBD5E1] transition-colors hover:text-[#00A896] hover:underline underline-offset-4"
+            className="pk-focus-ring rounded-md  text-xs text-[#CBD5E1] transition-colors hover:text-[#00A896] hover:underline underline-offset-4"
           >
             hello@personakey.co.uk
           </a>

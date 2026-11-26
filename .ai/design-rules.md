@@ -10,8 +10,8 @@
    - ZERO purple, indigo, or violet gradients/accents anywhere.
 3. **Typography:**
    - **Display Headings (H1/H2):** `Plus Jakarta Sans` (weights 600, 700, 800), tight `-0.03em` tracking, crisp `1.08` line-height.
-   - **UI & Body Prose:** `Inter` (weights 400, 500, 600).
-   - **Hardware Telemetry & Badges:** `JetBrains Mono` (weights 500, 600) with tabular numerals (`tabular-nums`).
+   - **UI & Body Prose:** `Inter` (weights 400, 500, 600, 700).
+   - **Badges, Telemetry & Metrics:** STRICTLY PROHIBIT monospace fonts (`JetBrains Mono` / `font-mono`). Use `Plus Jakarta Sans` or `Inter` with `tabular-nums` (`font-semibold` or `font-bold`, uppercase, tracking `0.08em`).
 4. **Surface, Geometry & Global Micro-Hovers:**
    - Solid flat surfaces only. ZERO `backdrop-blur`, ZERO glassmorphism, ZERO background mesh/radial gradients, and max `8px` (`rounded-lg`) corners.
    - Every interactive card lifts `translateY(-2px)` on hover with border illumination (`#00A896` or `#FF6B00`).

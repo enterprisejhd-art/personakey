@@ -211,7 +211,7 @@ export function WhySyncFailsSection() {
         {/* Section Header */}
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#FF6B00]">
+            <p className=" text-xs font-semibold tracking-[0.05em] text-[#FF6B00]">
               FIGHTING FRAGMENTED SYNC &amp; CLOUD RISK
             </p>
             <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[#090D16]">
@@ -222,7 +222,7 @@ export function WhySyncFailsSection() {
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 font-mono text-[11px] font-semibold text-[#090D16]">
+          <div className="inline-flex items-center gap-2 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5  text-[11px] font-semibold text-[#090D16]">
             <CloudOff size={13} className="text-[#00A896]" aria-hidden="true" />
             Zero Central Cloud · Offline NFC/BLE Resolution
           </div>
@@ -245,20 +245,20 @@ export function WhySyncFailsSection() {
                     className="shrink-0 text-[#FF6B00]"
                     aria-hidden="true"
                   />
-                  <span className="font-mono text-xs font-semibold tracking-[0.03em] text-[#090D16]">
+                  <span className=" text-xs font-semibold tracking-[0.03em] text-[#090D16]">
                     Cloud &amp; Silo Failure Stream
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[11px] text-[#64748B] tabular-nums">
+                  <span className=" text-[11px] text-[#64748B] tabular-nums">
                     {isStreamPaused ? 'Paused' : 'Live Feed'}
                   </span>
                   <button
                     type="button"
                     onClick={() => setIsStreamManuallyPaused((prev) => !prev)}
                     aria-pressed={isStreamManuallyPaused}
-                    className="pk-focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1 font-mono text-[11px] font-medium text-[#090D16] transition-colors hover:border-[#090D16] whitespace-nowrap shrink-0"
+                    className="pk-focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1  text-[11px] font-medium text-[#090D16] transition-colors hover:border-[#090D16] whitespace-nowrap shrink-0"
                   >
                     {isStreamPaused ? (
                       <>
@@ -317,16 +317,16 @@ export function WhySyncFailsSection() {
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <span className="rounded-sm bg-[#FF6B00] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#FFFFFF] whitespace-nowrap shrink-0">
+                          <span className="rounded-sm bg-[#FF6B00] px-2 py-0.5  text-[10px] font-semibold text-[#FFFFFF] whitespace-nowrap shrink-0">
                             {incident.severityBadge}
                           </span>
-                          <span className="font-mono text-[11px] font-semibold text-[#090D16]">
+                          <span className=" text-[11px] font-semibold text-[#090D16]">
                             {incident.streamCode}
                           </span>
                         </div>
 
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[11px] text-[#64748B] tabular-nums">
+                          <span className=" text-[11px] text-[#64748B] tabular-nums">
                             {incident.timestamp}
                           </span>
                           <IncidentIcon icon={incident.icon} active={isSelected} />
@@ -337,7 +337,7 @@ export function WhySyncFailsSection() {
                         &ldquo;{incident.incidentQuote}&rdquo;
                       </p>
 
-                      <div className="mt-2.5 flex items-center justify-between gap-2 border-t border-[#E2E8F0] pt-2 font-mono text-[11px]">
+                      <div className="mt-2.5 flex items-center justify-between gap-2 border-t border-[#E2E8F0] pt-2  text-[11px]">
                         <span className="text-[#64748B]">
                           {incident.legacyFailure.exposureMetric}
                         </span>
@@ -362,7 +362,7 @@ export function WhySyncFailsSection() {
               </div>
             </div>
 
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] pt-3 font-mono text-[11px] text-[#64748B]">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] pt-3  text-[11px] text-[#64748B]">
               <span>Hover stream to pause · Click any incident to inspect</span>
               <span className="font-semibold text-[#090D16] tabular-nums">
                 Incident 0{selectedIndex + 1} / 0{FAILURE_STREAM.length}
@@ -376,7 +376,7 @@ export function WhySyncFailsSection() {
               {/* Right Panel Top Bar + Simulate PersonaKey Tap Toggle */}
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1E293B] pb-4">
                 <div>
-                  <span className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[#00A896]">
+                  <span className=" text-[11px] font-semibold tracking-[0.04em] text-[#00A896]">
                     SWITCH TO PERSONAKEY ZERO-CLOUD VAULT
                   </span>
                   <h3 className="font-display mt-1 text-base font-bold text-[#FFFFFF]">
@@ -389,7 +389,7 @@ export function WhySyncFailsSection() {
                   role="switch"
                   aria-checked={tapSimulated}
                   onClick={() => setTapSimulated((prev) => !prev)}
-                  className={`group pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md border px-3.5 py-2 font-mono text-xs font-semibold transition-colors whitespace-nowrap shrink-0 ${
+                  className={`group pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md border px-3.5 py-2  text-xs font-semibold transition-colors whitespace-nowrap shrink-0 ${
                     tapSimulated
                       ? 'border-[#00A896] bg-[#00A896] text-[#FFFFFF] hover:border-[#FF6B00] hover:bg-[#FF6B00]'
                       : 'border-[#FF6B00] bg-[#FF6B00] text-[#FFFFFF] hover:border-[#00A896] hover:bg-[#00A896]'
@@ -426,7 +426,7 @@ export function WhySyncFailsSection() {
                   {/* Physical PersonaKey Node */}
                   <div
                     ref={keyNodeRef}
-                    className={`flex items-center gap-2 rounded-md border bg-[#090D16] px-3 py-2 font-mono text-[11px] font-semibold ${
+                    className={`flex items-center gap-2 rounded-md border bg-[#090D16] px-3 py-2  text-[11px] font-semibold ${
                       tapSimulated
                         ? 'border-[#FF6B00] text-[#FFFFFF]'
                         : 'border-[#1E293B] text-[#94A3B8]'
@@ -442,7 +442,7 @@ export function WhySyncFailsSection() {
 
                   {/* Middle Status Badge */}
                   <span
-                    className={`rounded-md border bg-[#090D16] px-2.5 py-1 font-mono text-[10px] font-semibold ${
+                    className={`rounded-md border bg-[#090D16] px-2.5 py-1  text-[10px] font-semibold ${
                       tapSimulated
                         ? 'border-[#00A896] text-[#00A896]'
                         : 'border-[#FF6B00] text-[#FF6B00]'
@@ -454,7 +454,7 @@ export function WhySyncFailsSection() {
                   {/* Local Receiver Node */}
                   <div
                     ref={receiverNodeRef}
-                    className={`flex items-center gap-2 rounded-md border bg-[#090D16] px-3 py-2 font-mono text-[11px] font-semibold ${
+                    className={`flex items-center gap-2 rounded-md border bg-[#090D16] px-3 py-2  text-[11px] font-semibold ${
                       tapSimulated
                         ? 'border-[#00A896] text-[#FFFFFF]'
                         : 'border-[#1E293B] text-[#94A3B8]'
@@ -471,7 +471,7 @@ export function WhySyncFailsSection() {
                   </div>
                 </div>
 
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#1E293B] pt-2.5 font-mono text-[11px]">
+                <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#1E293B] pt-2.5  text-[11px]">
                   <span className="inline-flex items-center gap-1.5 text-[#CBD5E1]">
                     <CloudOff size={12} className="text-[#00A896]" aria-hidden="true" />
                     Central Cloud Servers: BYPASSED (0 Bytes)
@@ -493,11 +493,11 @@ export function WhySyncFailsSection() {
                   >
                     <div className="rounded-lg border border-[#00A896] bg-[#090D16] p-4">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#00A896]">
+                        <span className="inline-flex items-center gap-1.5  text-xs font-semibold text-[#00A896]">
                           <CheckCircle2 size={14} aria-hidden="true" />
                           SCENARIO RESOLVED OFFLINE
                         </span>
-                        <span className="font-mono text-[11px] font-semibold text-[#FFFFFF]">
+                        <span className=" text-[11px] font-semibold text-[#FFFFFF]">
                           {activeIncident.personaKeyResolution.proofMetric}
                         </span>
                       </div>
@@ -513,7 +513,7 @@ export function WhySyncFailsSection() {
 
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                       <div className="rounded-md border border-[#00A896] bg-[#090D16] p-3.5">
-                        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold text-[#00A896]">
+                        <span className="inline-flex items-center gap-1.5  text-[10px] font-semibold text-[#00A896]">
                           <Unlock size={12} aria-hidden="true" />
                           AUTHORISED PARTITION UNLOCKED
                         </span>
@@ -523,7 +523,7 @@ export function WhySyncFailsSection() {
                       </div>
 
                       <div className="rounded-md border border-[#1E293B] bg-[#090D16] p-3.5">
-                        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold text-[#FF6B00]">
+                        <span className="inline-flex items-center gap-1.5  text-[10px] font-semibold text-[#FF6B00]">
                           <Lock size={12} aria-hidden="true" />
                           ISOLATION GUARANTEE
                         </span>
@@ -533,7 +533,7 @@ export function WhySyncFailsSection() {
                       </div>
                     </div>
 
-                    <div className="rounded-md border border-[#1E293B] bg-[#090D16] px-3.5 py-2.5 font-mono text-xs text-[#CBD5E1]">
+                    <div className="rounded-md border border-[#1E293B] bg-[#090D16] px-3.5 py-2.5  text-xs text-[#CBD5E1]">
                       <span className="font-semibold text-[#00A896]">Disclosed Locally: </span>
                       {activeIncident.personaKeyResolution.disclosedPayload}
                     </div>
@@ -549,11 +549,11 @@ export function WhySyncFailsSection() {
                   >
                     <div className="rounded-lg border border-[#FF6B00] bg-[#090D16] p-4">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#FF6B00]">
+                        <span className="inline-flex items-center gap-1.5  text-xs font-semibold text-[#FF6B00]">
                           <AlertTriangle size={14} aria-hidden="true" />
                           WITHOUT PERSONAKEY · ACTIVE FAILURE
                         </span>
-                        <span className="font-mono text-[11px] font-semibold text-[#FFFFFF]">
+                        <span className=" text-[11px] font-semibold text-[#FFFFFF]">
                           {activeIncident.legacyFailure.exposureMetric}
                         </span>
                       </div>
@@ -574,7 +574,7 @@ export function WhySyncFailsSection() {
                       <button
                         type="button"
                         onClick={() => setTapSimulated(true)}
-                        className="group pk-focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-md bg-[#FF6B00] px-3.5 py-2 font-mono text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#00A896] whitespace-nowrap shrink-0"
+                        className="group pk-focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-md bg-[#FF6B00] px-3.5 py-2  text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#00A896] whitespace-nowrap shrink-0"
                       >
                         <span>Resolve Scenario Now</span>
                         <span className="pk-cta-arrow" aria-hidden="true">
@@ -588,7 +588,7 @@ export function WhySyncFailsSection() {
             </div>
 
             {/* Bottom Verification Strip */}
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-[#1E293B] pt-3 font-mono text-[11px] text-[#CBD5E1]">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-[#1E293B] pt-3  text-[11px] text-[#CBD5E1]">
               <span className="inline-flex items-center gap-1.5">
                 <ShieldCheck size={13} className="text-[#00A896]" aria-hidden="true" />
                 Zero Cloud Accounts · Zero Vendor Lock-In

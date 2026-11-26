@@ -9,6 +9,7 @@ import {
 interface SolutionTab {
   id: PilotSectorId;
   label: string;
+  gdprBadge: string;
   headline: string;
   intro: string;
   benefits: {
@@ -21,6 +22,7 @@ const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'coworking',
     label: 'Coworking & Enterprise',
+    gdprBadge: 'UK GDPR: 0 HR Health Records Stored',
     headline: 'Instant hot-desk accessibility without storing employee health records.',
     intro:
       'Staff and flex members tap a physical key at any shared workstation to apply text zoom, contrast, language, and desk height—while eliminating UK GDPR special-category storage liability.',
@@ -45,6 +47,7 @@ const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'nhs',
     label: 'NHS & Emergency Care',
+    gdprBadge: 'UK GDPR: Ephemeral Clinical Triage Only',
     headline: 'Offline triage directives surfaced in one tap—even without phone battery.',
     intro:
       'Paramedics and A&E clinicians verify their NHS Responder Credential locally to read blood group, severe allergies, and BSL/non-verbal care alerts without holding permanent patient preference databases.',
@@ -69,6 +72,7 @@ const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'mobility',
     label: 'Mobility & EV Fleets',
+    gdprBadge: 'UK GDPR: Zero Driver Profile Retention',
     headline: 'Instant cabin personalisation with zero forced rental apps or cloud accounts.',
     intro:
       'Drivers tap their key inside any shared EV or hire car to configure lumbar support, mirror angles, cabin climate, and regenerative braking—eliminating fleet vendor account friction.',
@@ -93,6 +97,7 @@ const SOLUTION_TABS: SolutionTab[] = [
   {
     id: 'hospitality',
     label: 'Hospitality & Public Kiosks',
+    gdprBadge: 'UK GDPR: Zero Guest CRM Profile Exposure',
     headline: 'Tailored suites and accessible public terminals with zero CRM breach risk.',
     intro:
       'Guests and travellers adapt hotel suite lighting, TV captions, airport kiosks, and gym consoles on arrival without leaving accessibility attributes inside loyalty databases.',
@@ -126,12 +131,12 @@ export function SolutionsSection() {
   return (
     <section
       id="solutions"
-      className="border-b border-[#E2E8F0] bg-[#FFFFFF] py-14 sm:py-18"
+      className="border-b border-[#E2E8F0] bg-[#F8FAFC] py-14 sm:py-18"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
+          <p className=" text-xs font-semibold tracking-[0.05em] text-[#00A896]">
             SOLUTIONS &amp; MULTI-SITE RECEIVER CONSOLE
           </p>
           <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[#090D16]">
@@ -188,6 +193,9 @@ export function SolutionsSection() {
                 exit={shouldReduceMotion ? undefined : { opacity: 0, y: -4 }}
                 transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
               >
+                <div className="mb-3 inline-flex items-center rounded-md border border-[#00A896] bg-[#FFFFFF] px-2.5 py-1  text-[10px] font-semibold text-[#090D16]">
+                  {activeTab.gdprBadge}
+                </div>
                 <h3 className="pk-scaled-subheading font-display font-bold text-[#090D16]">
                   {activeTab.headline}
                 </h3>

@@ -117,7 +117,7 @@ export function ModalDrawer({
         <div className="flex items-start justify-between gap-4 border-b border-[#E2E8F0] px-6 py-4">
           <div>
             {eyebrow && (
-              <p className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[#00A896]">
+              <p className=" text-[11px] font-semibold tracking-[0.04em] text-[#00A896]">
                 {eyebrow}
               </p>
             )}

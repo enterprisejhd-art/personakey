@@ -44,7 +44,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
       'PersonaKey decouples user preferences from any single vendor operating system or cloud account. Your five encrypted partitions reside inside a physical key you carry—translating cleanly onto third-party terminals on tap and purging immediately when you step away.',
   },
   {
-    platform: 'Apple iCloud & Accessibility',
+    platform: 'Apple iCloud',
     limitation: 'Tied to personal Apple IDs and Apple silicon devices',
     zeroCloudStorage: 'Cloud Required',
     crossVenue: 'Ecosystem-Locked',
@@ -92,7 +92,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
       'Matter 1.6 standardises how lamps and thermostats receive commands locally—but does not carry a user-owned portable identity. PersonaKey acts as the upstream human key that feeds Matter room hubs safely on arrival.',
   },
   {
-    platform: 'Hotel / Workplace Loyalty Profiles',
+    platform: 'Hotel Loyalty Apps',
     limitation: 'Vendor-owned databases storing static guest or staff preferences',
     zeroCloudStorage: 'Cloud Required',
     crossVenue: 'Not Supported',
@@ -101,7 +101,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
     emergencyReady: 'Not Supported',
     autoPurge: 'Not Supported',
     bridgeExplanation:
-      'Loyalty and HR accommodation databases lock your accessibility needs inside each company’s cloud—creating breach liability for providers while forcing users to repeat preferences at every new venue.',
+      'Hotel loyalty apps lock your room and accessibility needs inside each hospitality chain’s central cloud—creating UK GDPR breach liability for operators while forcing guests to reconfigure preferences at every new property.',
   },
 ];
 
@@ -129,26 +129,28 @@ function StatusBadge({ status }: { status: MatrixStatus }) {
   switch (status) {
     case 'Core Architecture':
       return (
-        <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#00A896] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#FFFFFF] whitespace-nowrap">
+        <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#00A896] px-2.5 py-1  text-[10px] font-semibold text-[#FFFFFF] whitespace-nowrap">
           <Check size={11} strokeWidth={2.5} aria-hidden="true" />
           Core Architecture
         </span>
       );
     case 'Ecosystem-Locked':
       return (
-        <span className="inline-flex items-center rounded-md border border-[#FF6B00] bg-[#F8FAFC] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#090D16] whitespace-nowrap">
+        <span className="inline-flex items-center gap-1.5 rounded-md border border-[#FF6B00] bg-[#FFFFFF] px-2.5 py-1  text-[10px] font-semibold text-[#090D16] whitespace-nowrap">
+          <span className="h-1.5 w-1.5 rounded-xs bg-[#FF6B00]" aria-hidden="true" />
           Ecosystem-Locked
         </span>
       );
     case 'Cloud Required':
       return (
-        <span className="inline-flex items-center rounded-md border border-[#334155] bg-[#FFFFFF] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#334155] whitespace-nowrap">
+        <span className="inline-flex items-center gap-1.5 rounded-md border border-[#090D16] bg-[#F8FAFC] px-2.5 py-1  text-[10px] font-semibold text-[#090D16] whitespace-nowrap">
+          <span className="h-1.5 w-1.5 rounded-xs bg-[#090D16]" aria-hidden="true" />
           Cloud Required
         </span>
       );
     case 'Not Supported':
       return (
-        <span className="inline-flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1 font-mono text-[10px] font-medium text-[#64748B] whitespace-nowrap">
+        <span className="inline-flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1  text-[10px] font-medium text-[#64748B] whitespace-nowrap">
           Not Supported
         </span>
       );
@@ -170,13 +172,13 @@ export function NeutralitySection({
   return (
     <section
       id="architecture"
-      className="border-b border-[#E2E8F0] bg-[#F8FAFC] py-14 sm:py-18"
+      className="border-b border-[#E2E8F0] bg-[#FFFFFF] py-14 sm:py-18"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
+            <p className=" text-xs font-semibold tracking-[0.05em] text-[#00A896]">
               BUILT FOR NEUTRALITY
             </p>
             <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[#090D16]">
@@ -187,7 +189,7 @@ export function NeutralitySection({
             </p>
           </div>
 
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 font-mono text-[11px] font-medium text-[#090D16]">
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5  text-[11px] font-medium text-[#090D16]">
             <Info size={13} className="text-[#00A896]" aria-hidden="true" />
             Click any row to compare architecture
           </span>
@@ -243,12 +245,12 @@ export function NeutralitySection({
                             {row.platform}
                           </span>
                           {row.isPersonaKey && (
-                            <span className="rounded-sm border border-[#00A896] bg-[#FFFFFF] px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#00A896]">
+                            <span className="rounded-sm border border-[#00A896] bg-[#FFFFFF] px-1.5 py-0.5  text-[10px] font-semibold text-[#00A896]">
                               PORTABLE
                             </span>
                           )}
                           {isSelected && (
-                            <span className="rounded-sm bg-[#090D16] px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#FFFFFF]">
+                            <span className="rounded-sm bg-[#090D16] px-1.5 py-0.5  text-[10px] font-semibold text-[#FFFFFF]">
                               ACTIVE
                             </span>
                           )}
@@ -291,8 +293,8 @@ export function NeutralitySection({
                     className="shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
-                  <span className="font-mono text-xs font-semibold text-[#090D16]">
-                    {activeRow.platform.toUpperCase()} · ARCHITECTURAL COMPARISON
+                  <span className=" text-xs font-semibold text-[#090D16]">
+                    {activeRow.platform.toUpperCase()} · ARCHITECTURAL TAKEAWAY
                   </span>
                 </div>
                 <p className="pk-scaled-small mt-2 leading-relaxed text-[#334155]">
@@ -300,7 +302,7 @@ export function NeutralitySection({
                 </p>
               </div>
 
-              <span className="shrink-0 rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1.5 font-mono text-[11px] font-semibold text-[#090D16]">
+              <span className="shrink-0 rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1.5  text-[11px] font-semibold text-[#090D16]">
                 {activeRow.isPersonaKey
                   ? '6/6 Core Capabilities Verified'
                   : 'PersonaKey Bridges All 6 Gaps'}

@@ -17,6 +17,7 @@ export type PilotSectorId =
 
 interface ReceiverNode {
   id: string;
+  sector: PilotSectorId;
   label: string;
   site: string;
   token: string;
@@ -61,6 +62,7 @@ const SECTOR_META: Record<
 const INITIAL_RECEIVERS: ReceiverNode[] = [
   {
     id: 'rx-01',
+    sector: 'coworking',
     label: 'Clerkenwell Desk #04',
     site: 'Floor 2 · Windows 11',
     token: 'rx_anon_9f2a',
@@ -70,6 +72,7 @@ const INITIAL_RECEIVERS: ReceiverNode[] = [
   },
   {
     id: 'rx-02',
+    sector: 'nhs',
     label: 'NHS Triage Tablet #A1',
     site: 'A&E Bay 3 · Clinical Unit',
     token: 'rx_anon_4c81',
@@ -79,6 +82,7 @@ const INITIAL_RECEIVERS: ReceiverNode[] = [
   },
   {
     id: 'rx-03',
+    sector: 'mobility',
     label: 'Fleet EV #B12',
     site: 'King’s Cross · Cabin Pad',
     token: 'rx_anon_8b03',
@@ -88,6 +92,7 @@ const INITIAL_RECEIVERS: ReceiverNode[] = [
   },
   {
     id: 'rx-04',
+    sector: 'hospitality',
     label: 'Hotel Suite #402',
     site: 'North Wing · Matter Hub',
     token: 'rx_anon_7d19',
@@ -97,6 +102,7 @@ const INITIAL_RECEIVERS: ReceiverNode[] = [
   },
   {
     id: 'rx-05',
+    sector: 'hospitality',
     label: 'Terminal Kiosk #07',
     site: 'Concourse · Audio-Assist',
     token: 'rx_anon_5a90',
@@ -106,6 +112,7 @@ const INITIAL_RECEIVERS: ReceiverNode[] = [
   },
   {
     id: 'rx-06',
+    sector: 'coworking',
     label: 'Manchester Pod #B2',
     site: 'Quiet Zone · Matter Lamp',
     token: 'rx_anon_2e64',
@@ -208,10 +215,10 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-t-lg border-b border-[#E2E8F0] bg-[#FFFFFF] px-5 py-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-xs font-semibold tracking-[0.04em] text-[#090D16]">
+            <span className=" text-xs font-semibold tracking-[0.04em] text-[#090D16]">
               LIVE RECEIVER NETWORK CONSOLE
             </span>
-            <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#F8FAFC] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#090D16]">
+            <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#F8FAFC] px-2.5 py-0.5  text-[11px] font-semibold text-[#090D16]">
               <ShieldCheck size={12} className="text-[#00A896]" aria-hidden="true" />
               Zero Personal Data Retained
             </span>
@@ -247,10 +254,10 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
       {/* 6 Interactive Multi-Site Receiver Nodes */}
       <div className="p-5">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <span className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[#64748B]">
+          <span className=" text-[11px] font-semibold tracking-[0.04em] text-[#64748B]">
             {meta.estateLabel.toUpperCase()}
           </span>
-          <span className="font-mono text-[11px] text-[#64748B]">
+          <span className=" text-[11px] text-[#64748B]">
             {allWiped ? '0 Bytes Retained across network' : 'Tap any card to test live session'}
           </span>
         </div>
@@ -258,6 +265,7 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {receivers.map((rx) => {
             const isRecentTap = lastTappedId === rx.id;
+            const isSectorFocus = rx.sector === sectorId;
             return (
               <motion.button
                 key={rx.id}
@@ -266,19 +274,19 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                 onClick={() => handleToggleReceiverTap(rx.id)}
                 className={`pk-focus-ring pk-card-hover w-full cursor-pointer rounded-md border p-3.5 text-left ${
                   rx.active
-                    ? isRecentTap
+                    ? isRecentTap || isSectorFocus
                       ? 'border-[#00A896] bg-[#FFFFFF]'
                       : 'border-[#E2E8F0] bg-[#FFFFFF]'
                     : 'border-[#E2E8F0] bg-[#F8FAFC]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#090D16]">
+                  <span className="inline-flex items-center gap-1.5  text-xs font-semibold text-[#090D16]">
                     <Monitor size={13} className="text-[#64748B]" aria-hidden="true" />
                     {rx.label}
                   </span>
                   <span
-                    className={`rounded-md border px-2 py-0.5 font-mono text-[10px] font-semibold ${
+                    className={`rounded-md border px-2 py-0.5  text-[10px] font-semibold ${
                       rx.active
                         ? 'border-[#00A896] bg-[#F8FAFC] text-[#090D16]'
                         : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B]'
@@ -294,7 +302,7 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                   {rx.active ? (
                     <>
                       <div className="flex items-center justify-between gap-1.5">
-                        <span className="font-mono text-[11px] font-medium text-[#090D16]">
+                        <span className=" text-[11px] font-medium text-[#090D16]">
                           {rx.token}
                         </span>
                         {rx.tokenType === 'nfc' ? (
@@ -306,21 +314,21 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                             <Nfc size={10} strokeWidth={2.25} aria-hidden="true" />
                           </span>
                         ) : (
-                          <span className="font-mono text-[10px] text-[#64748B]">
+                          <span className=" text-[10px] text-[#64748B]">
                             BLE
                           </span>
                         )}
                       </div>
-                      <p className="mt-1 font-mono text-[10px] text-[#64748B]">
+                      <p className="mt-1  text-[10px] text-[#64748B]">
                         {rx.partition} · Click to purge
                       </p>
                     </>
                   ) : (
                     <>
-                      <p className="font-mono text-[11px] font-medium text-[#090D16]">
+                      <p className=" text-[11px] font-medium text-[#090D16]">
                         0 Bytes Retained
                       </p>
-                      <p className="mt-1 font-mono text-[10px] text-[#00A896]">
+                      <p className="mt-1  text-[10px] text-[#00A896]">
                         Click to simulate live tap
                       </p>
                     </>
@@ -334,11 +342,11 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
         {/* Zero Personal Data Retained Audit Logs */}
         <div className="mt-4 rounded-md border border-[#E2E8F0] bg-[#FFFFFF]">
           <div className="flex items-center justify-between border-b border-[#E2E8F0] px-3.5 py-2">
-            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold text-[#090D16]">
+            <span className="inline-flex items-center gap-1.5  text-[11px] font-semibold text-[#090D16]">
               <CheckCircle2 size={13} className="text-[#00A896]" aria-hidden="true" />
               Network Audit Log (Zero Personal Data Retained)
             </span>
-            <span className="font-mono text-[10px] text-[#64748B]">
+            <span className=" text-[10px] text-[#64748B]">
               UK GDPR VERIFIED
             </span>
           </div>
@@ -353,10 +361,10 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                   className="px-3.5 py-2"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-[11px] font-semibold text-[#090D16]">
+                    <span className=" text-[11px] font-semibold text-[#090D16]">
                       {entry.event}
                     </span>
-                    <span className="font-mono text-[10px] text-[#64748B] tabular-nums">
+                    <span className=" text-[10px] text-[#64748B] tabular-nums">
                       {entry.timestamp}
                     </span>
                   </div>

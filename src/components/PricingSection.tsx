@@ -14,12 +14,12 @@ export function PricingSection({
   return (
     <section
       id="pricing"
-      className="border-b border-[var(--pk-border)] bg-[var(--pk-surface)] py-14 sm:py-18"
+      className="border-b border-[var(--pk-border)] bg-[var(--pk-bg)] py-14 sm:py-18"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
+          <p className=" text-xs font-semibold tracking-[0.05em] text-[#00A896]">
             COMMERCIAL MODEL &amp; PRICING
           </p>
           <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[var(--pk-heading)]">
@@ -32,7 +32,7 @@ export function PricingSection({
           {/* Card 1: PersonaKey Token + App */}
           <article className="pk-card-hover flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6 sm:p-7">
             <div>
-              <p className="font-mono text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)]">
+              <p className=" text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)]">
                 FOR INDIVIDUALS
               </p>
               <h3 className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[var(--pk-heading)]">
@@ -48,7 +48,7 @@ export function PricingSection({
                     one-off hardware token
                   </span>
                 </div>
-                <div className="mt-2.5 inline-flex items-center gap-2 font-mono text-[11px] text-[var(--pk-text)]">
+                <div className="mt-2.5 inline-flex items-center gap-2  text-[11px] text-[var(--pk-text)]">
                   <span
                     className="inline-flex h-4 w-4 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
                     aria-hidden="true"
@@ -116,7 +116,7 @@ export function PricingSection({
           {/* Card 2: PersonaKey Plus */}
           <article className="pk-card-hover flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6 sm:p-7">
             <div>
-              <p className="font-mono text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)]">
+              <p className=" text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)]">
                 OPTIONAL SOFTWARE TIER
               </p>
               <h3 className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[var(--pk-heading)]">
@@ -132,7 +132,7 @@ export function PricingSection({
                     / month
                   </span>
                 </div>
-                <p className="mt-2.5 font-mono text-[11px] text-[var(--pk-muted)]">
+                <p className="mt-2.5  text-[11px] text-[var(--pk-muted)]">
                   Multi-context sync &amp; encrypted preference backup
                 </p>
               </div>
@@ -194,7 +194,7 @@ export function PricingSection({
           {/* Card 3: Workplace & Coworking Licence */}
           <article className="pk-card-hover-orange flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#FF6B00] bg-[var(--pk-surface)] p-6 sm:p-7">
             <div>
-              <p className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[var(--pk-heading)]">
+              <p className=" text-[11px] font-semibold tracking-[0.04em] text-[var(--pk-heading)]">
                 B2B PILOT &amp; SCALE
               </p>
               <h3 className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[var(--pk-heading)]">
@@ -210,7 +210,7 @@ export function PricingSection({
                     / user / month
                   </span>
                 </div>
-                <p className="mt-2.5 font-mono text-[11px] font-medium text-[var(--pk-heading)] tabular-nums">
+                <p className="mt-2.5  text-[11px] font-medium text-[var(--pk-heading)] tabular-nums">
                   £1,500+ pilot setup &amp; integration
                 </p>
               </div>

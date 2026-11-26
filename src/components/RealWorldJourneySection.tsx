@@ -100,6 +100,7 @@ export function RealWorldJourneySection({
   const [editOpen, setEditOpen] = useState(false);
   const [bslAlertExpanded, setBslAlertExpanded] = useState(true);
   const [audioAssistPreview, setAudioAssistPreview] = useState(true);
+  const [kioskActionMessage, setKioskActionMessage] = useState<string | null>(null);
   const [lastWipeTimestamp, setLastWipeTimestamp] = useState<string | null>(null);
 
   const shouldReduceMotion = useReducedMotion();
@@ -139,25 +140,29 @@ export function RealWorldJourneySection({
   const handleSelectScenario = (id: ScenarioId) => {
     onScenarioChange(id);
     setPhase('idle');
+    setKioskActionMessage(null);
     setLastWipeTimestamp(null);
     onConnectionChange(false);
   };
 
   const handleTapOnReceiver = () => {
     if (phase !== 'idle') return;
+    setKioskActionMessage(null);
     setLastWipeTimestamp(null);
     setPhase('step1-tap');
   };
 
   const handleStepAwayAndWipe = () => {
     if (phase === 'idle' || phase === 'step4-wipe') return;
+    setKioskActionMessage(null);
     onConnectionChange(false);
     setPhase('step4-wipe');
   };
 
-  const isHandshakeOrLive =
-    phase === 'step2-handshake' || phase === 'step3-live';
-  const isPartitionUnlocked = phase === 'step2-handshake' || phase === 'step3-live';
+  const showArchitectureProof =
+    phase === 'step1-tap' || phase === 'step2-handshake' || phase === 'step3-live';
+  const isPartitionUnlocked =
+    phase === 'step1-tap' || phase === 'step2-handshake' || phase === 'step3-live';
   const unlockedPartition: PartitionId | null = isPartitionUnlocked
     ? activeScenario.unlocksPartition
     : null;
@@ -176,57 +181,58 @@ export function RealWorldJourneySection({
   return (
     <section
       id="real-world-journey"
-      className="border-b border-[#1E293B] bg-[#090D16] py-14 text-[#FFFFFF] sm:py-18"
+      className="border-b border-[#E2E8F0] bg-[#F8FAFC] py-14 text-[#090D16] sm:py-18"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header (Bright Corporate Framing) */}
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs font-semibold tracking-[0.04em] text-[#FF6B00]">
+            <p className=" text-xs font-semibold tracking-[0.04em] text-[#FF6B00]">
               INTERACTIVE REAL-WORLD PRODUCT JOURNEY
             </p>
-            <h2 className="pk-scaled-heading font-display mt-2 font-bold text-balance text-[#FFFFFF]">
+            <h2 className="pk-scaled-heading font-display mt-2 font-bold text-balance text-[#090D16]">
               One physical key, five encrypted partitions, six live environments.
             </h2>
-            <p className="pk-scaled-small mt-2.5 text-[#CBD5E1]">
+            <p className="pk-scaled-small mt-2.5 text-[#334155]">
               Customise what lives inside your physical PersonaKey on the left, select a receiver scenario on the right, and tap to inspect the complete 4-step end-to-end lifecycle.
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 rounded-md border border-[#1E293B] bg-[#090D16] px-3 py-1.5 font-mono text-[11px] font-medium text-[#FFFFFF]">
+          <div className="inline-flex items-center gap-2 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5  text-[11px] font-medium text-[#090D16]">
             <WifiOff size={13} className="text-[#00A896]" aria-hidden="true" />
             Offline Hardware-to-Receiver · 0 Cloud Sync
           </div>
         </div>
 
-        {/* Main 2-Column Stage */}
-        <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
-          {/* PERSISTENT LEFT COLUMN (5 cols): Your Physical PersonaKey Vault */}
-          <div className="min-w-0 lg:sticky lg:top-20 lg:col-span-5">
-            <div className="relative rounded-lg border border-[#1E293B] bg-[#090D16] p-5">
-              <BorderBeam
-                size={76}
-                duration={5.5}
-                borderWidth={1}
-                colorFrom="#00A896"
-                colorTo="#FF6B00"
-              />
+        {/* Obsidian Interactive Stage Framed Inside Bright Layout */}
+        <div className="mt-8 rounded-lg border border-[#1E293B] bg-[#090D16] p-5 text-[#FFFFFF] sm:p-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
+            {/* PERSISTENT LEFT COLUMN (5 cols): Your Physical PersonaKey */}
+            <div className="min-w-0 lg:sticky lg:top-20 lg:col-span-5">
+              <div className="relative rounded-lg border border-[#1E293B] bg-[#090D16] p-5">
+                <BorderBeam
+                  size={76}
+                  duration={5.5}
+                  borderWidth={1}
+                  colorFrom="#00A896"
+                  colorTo="#FF6B00"
+                />
 
-              {/* Vault Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1E293B] pb-4">
-                <div>
-                  <span className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[#FF6B00]">
-                    YOUR PHYSICAL PERSONAKEY VAULT
-                  </span>
-                  <h3 className="mt-0.5 text-base font-semibold text-[#FFFFFF]">
-                    Sarah Jenkins · Key #PK-409
-                  </h3>
-                </div>
+                {/* Vault Header */}
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1E293B] pb-4">
+                  <div>
+                    <span className=" text-[11px] font-semibold tracking-[0.04em] text-[#FF6B00]">
+                      YOUR PHYSICAL PERSONAKEY
+                    </span>
+                    <h3 className="mt-0.5 text-base font-semibold text-[#FFFFFF]">
+                      Your Physical PersonaKey · #PK-409
+                    </h3>
+                  </div>
 
-                <span
-                  className={`rounded-md border px-2.5 py-1 font-mono text-[10px] font-semibold ${
-                    isPartitionUnlocked
-                      ? 'border-[#00A896] bg-[#090D16] text-[#00A896]'
+                  <span
+                    className={`rounded-md border px-2.5 py-1  text-[10px] font-semibold ${
+                      isPartitionUnlocked
+                        ? 'border-[#00A896] bg-[#090D16] text-[#00A896]'
                       : 'border-[#1E293B] bg-[#090D16] text-[#CBD5E1]'
                   }`}
                 >
@@ -305,10 +311,10 @@ export function RealWorldJourneySection({
                     </svg>
 
                     <div className="min-w-0">
-                      <p className="font-mono text-[11px] font-semibold text-[#FFFFFF]">
+                      <p className=" text-[11px] font-semibold text-[#FFFFFF]">
                         AES-256 Hardware Element
                       </p>
-                      <p className="mt-0.5 font-mono text-[10px] text-[#CBD5E1]">
+                      <p className="mt-0.5  text-[10px] text-[#CBD5E1]">
                         {phase === 'step1-tap'
                           ? 'NFC Field Active...'
                           : phase === 'step2-handshake'
@@ -323,9 +329,9 @@ export function RealWorldJourneySection({
                   </div>
                 </div>
 
-                <div className="mt-3 flex items-center gap-2 rounded-md border border-[#00A896] bg-[#090D16] px-3 py-2 font-mono text-[10px] font-semibold text-[#FFFFFF]">
+                <div className="mt-3 flex items-center gap-2 rounded-md border border-[#00A896] bg-[#090D16] px-3 py-2  text-[10px] font-semibold text-[#FFFFFF]">
                   <Lock size={12} className="shrink-0 text-[#FF6B00]" aria-hidden="true" />
-                  <span>ZERO CLOUD CONNECTION · 100% LOCAL KEY STORAGE</span>
+                  <span>ZERO CLOUD DEPENDENCY · 100% ON-DEVICE VAULT</span>
                 </div>
               </div>
 
@@ -377,7 +383,7 @@ export function RealWorldJourneySection({
                       </div>
 
                       <span
-                        className={`shrink-0 rounded-sm border px-2 py-0.5 font-mono text-[10px] font-semibold ${
+                        className={`shrink-0 rounded-sm border px-2 py-0.5  text-[10px] font-semibold ${
                           isUnlocked
                             ? 'border-[#00A896] bg-[#090D16] text-[#00A896]'
                             : 'border-[#1E293B] bg-[#090D16] text-[#94A3B8]'
@@ -401,7 +407,7 @@ export function RealWorldJourneySection({
                 >
                   <span className="inline-flex items-center gap-2">
                     <SlidersHorizontal size={14} className="text-[#00A896]" aria-hidden="true" />
-                    Customise My Key Data
+                    Customise My Key
                   </span>
                   {editOpen ? (
                     <ChevronUp size={14} aria-hidden="true" />
@@ -421,13 +427,13 @@ export function RealWorldJourneySection({
                       className="mt-3 space-y-3 rounded-md border border-[#1E293B] bg-[#090D16] p-4"
                     >
                       <div className="flex items-center justify-between border-b border-[#1E293B] pb-2">
-                        <span className="font-mono text-[11px] font-semibold text-[#FF6B00]">
+                        <span className=" text-[11px] font-semibold text-[#FF6B00]">
                           ON-KEY PARTITION VALUES
                         </span>
                         <button
                           type="button"
                           onClick={() => onVaultChange(DEFAULT_KEY_VAULT)}
-                          className="pk-focus-ring cursor-pointer font-mono text-[11px] font-medium text-[#CBD5E1] underline hover:text-[#FFFFFF]"
+                          className="pk-focus-ring cursor-pointer  text-[11px] font-medium text-[#CBD5E1] underline hover:text-[#FFFFFF]"
                         >
                           Reset Defaults
                         </button>
@@ -701,7 +707,7 @@ export function RealWorldJourneySection({
                     )}
                     <div className="flex w-full items-center justify-between gap-2">
                       <ScenarioIcon id={scenario.id} isSelected={isSelected} />
-                      <span className="font-mono text-[10px] text-[#94A3B8]">
+                      <span className=" text-[10px] text-[#94A3B8]">
                         {scenario.verifiedCredential}
                       </span>
                     </div>
@@ -723,7 +729,7 @@ export function RealWorldJourneySection({
                       <span className="text-sm font-semibold text-[#FFFFFF]">
                         {activeScenario.title}
                       </span>
-                      <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#090D16] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#FFFFFF]">
+                      <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#090D16] px-2 py-0.5  text-[10px] font-semibold text-[#FFFFFF]">
                         <ShieldCheck size={11} className="text-[#00A896]" aria-hidden="true" />
                         {activeScenario.verifiedCredential}
                       </span>
@@ -808,13 +814,13 @@ export function RealWorldJourneySection({
 
                     <div
                       ref={beamKeyRef}
-                      className="relative z-10 inline-flex items-center gap-1.5 rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#FF6B00]"
+                      className="relative z-10 inline-flex items-center gap-1.5 rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1  text-[10px] font-semibold text-[#FF6B00]"
                     >
                       <KeyRound size={11} aria-hidden="true" />
                       <span>KEY #PK-409</span>
                     </div>
 
-                    <span className="relative z-10 rounded-sm bg-[#090D16] px-2 font-mono text-[10px] text-[#CBD5E1]">
+                    <span className="relative z-10 rounded-sm bg-[#090D16] px-2  text-[10px] text-[#CBD5E1]">
                       {phase === 'idle'
                         ? 'Awaiting Tap'
                         : phase === 'step1-tap'
@@ -828,7 +834,7 @@ export function RealWorldJourneySection({
 
                     <div
                       ref={beamReceiverRef}
-                      className="relative z-10 inline-flex items-center gap-1.5 rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#FFFFFF]"
+                      className="relative z-10 inline-flex items-center gap-1.5 rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1  text-[10px] font-semibold text-[#FFFFFF]"
                     >
                       <Radio size={11} className="text-[#00A896]" aria-hidden="true" />
                       <span className="hidden sm:inline">{activeScenario.verifiedCredential}</span>
@@ -847,7 +853,7 @@ export function RealWorldJourneySection({
                       return (
                         <div
                           key={step.id}
-                          className={`rounded-md border px-2.5 py-1.5 font-mono text-[10px] font-semibold transition-colors ${
+                          className={`rounded-md border px-2.5 py-1.5  text-[10px] font-semibold transition-colors ${
                             isCurrent
                               ? 'border-[#00A896] bg-[#090D16] text-[#FFFFFF]'
                               : isCompleted
@@ -866,13 +872,15 @@ export function RealWorldJourneySection({
 
               {/* Main Viewport Body */}
               <div className="p-5">
-                {/* Architecture Status Bar (Visible in Step 2 & Step 3) */}
-                {isHandshakeOrLive && (
+                {/* Architecture Status Bar (Visible in Stage 1, Stage 2 & Stage 3) */}
+                {showArchitectureProof && (
                   <motion.div
                     initial={shouldReduceMotion ? false : { opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className="mb-4 grid grid-cols-1 gap-2.5 rounded-md border border-[#00A896] bg-[#090D16] p-3 sm:grid-cols-3"
+                    className={`mb-4 grid grid-cols-1 gap-2.5 rounded-md border bg-[#090D16] p-3 sm:grid-cols-3 ${
+                      phase === 'step1-tap' ? 'border-[#FF6B00]' : 'border-[#00A896]'
+                    }`}
                   >
                     <div className="flex items-start gap-2">
                       <CheckCircle2
@@ -881,11 +889,11 @@ export function RealWorldJourneySection({
                         aria-hidden="true"
                       />
                       <div>
-                        <p className="font-mono text-[10px] font-semibold text-[#CBD5E1]">
-                          Component 1: On-Key Vault
+                        <p className=" text-[10px] font-semibold text-[#CBD5E1]">
+                          On-Key Vault
                         </p>
-                        <p className="font-mono text-[11px] font-semibold text-[#FFFFFF]">
-                          1 Unlocked / 4 Sealed
+                        <p className=" text-[11px] font-semibold text-[#FFFFFF]">
+                          [1 Unlocked / 4 Sealed]
                         </p>
                       </div>
                     </div>
@@ -897,11 +905,11 @@ export function RealWorldJourneySection({
                         aria-hidden="true"
                       />
                       <div>
-                        <p className="font-mono text-[10px] font-semibold text-[#CBD5E1]">
-                          Component 2: Provider Receiver
+                        <p className=" text-[10px] font-semibold text-[#CBD5E1]">
+                          Provider Receiver
                         </p>
-                        <p className="font-mono text-[11px] font-semibold text-[#FFFFFF]">
-                          Role Certificate Verified
+                        <p className=" text-[11px] font-semibold text-[#FFFFFF]">
+                          [Role Certificate Verified]
                         </p>
                       </div>
                     </div>
@@ -913,11 +921,11 @@ export function RealWorldJourneySection({
                         aria-hidden="true"
                       />
                       <div>
-                        <p className="font-mono text-[10px] font-semibold text-[#CBD5E1]">
-                          Component 3: Local Translation Engine
+                        <p className=" text-[10px] font-semibold text-[#CBD5E1]">
+                          Local Translation Engine
                         </p>
-                        <p className="font-mono text-[11px] font-semibold text-[#FFFFFF]">
-                          Cloud Bypassed
+                        <p className=" text-[11px] font-semibold text-[#FFFFFF]">
+                          [Cloud Bypassed]
                         </p>
                       </div>
                     </div>
@@ -945,11 +953,11 @@ export function RealWorldJourneySection({
                         Receiver memory is empty. Select &ldquo;Tap PersonaKey on Receiver&rdquo; above to begin the 4-step local handshake.
                       </p>
                       <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                        <span className="inline-flex items-center rounded-md border border-[#1E293B] bg-[#090D16] px-3 py-1 font-mono text-[11px] font-semibold text-[#FFFFFF]">
+                        <span className="inline-flex items-center rounded-md border border-[#1E293B] bg-[#090D16] px-3 py-1  text-[11px] font-semibold text-[#FFFFFF]">
                           0 Bytes Retained
                         </span>
                         {lastWipeTimestamp && (
-                          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#00A896] bg-[#090D16] px-3 py-1 font-mono text-[11px] font-semibold text-[#00A896]">
+                          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#00A896] bg-[#090D16] px-3 py-1  text-[11px] font-semibold text-[#00A896]">
                             <CheckCircle2 size={12} aria-hidden="true" />
                             {lastWipeTimestamp}
                           </span>
@@ -1025,21 +1033,21 @@ export function RealWorldJourneySection({
                         <div className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-5 text-[#090D16]">
                           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2E8F0] pb-3">
                             <div>
-                              <span className="font-mono text-[10px] font-semibold text-[#00A896]">
+                              <span className=" text-[10px] font-semibold text-[#00A896]">
                                 PARAMEDIC TRIAGE TABLET · PARTITION 05 ACTIVE
                               </span>
                               <h4 className="mt-0.5 text-base font-semibold text-[#090D16]">
                                 Critical Care Directives — Sarah Jenkins
                               </h4>
                             </div>
-                            <span className="rounded-md bg-[#090D16] px-3 py-1 font-mono text-xs font-semibold text-[#FFFFFF]">
+                            <span className="rounded-md bg-[#090D16] px-3 py-1  text-xs font-semibold text-[#FFFFFF]">
                               Blood Group: {vault.emergency.bloodType}
                             </span>
                           </div>
 
                           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                             <div className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-3">
-                              <span className="font-mono text-[10px] font-semibold text-[#64748B]">
+                              <span className=" text-[10px] font-semibold text-[#64748B]">
                                 SEVERE ALLERGIES
                               </span>
                               <p className="mt-1 text-sm font-semibold text-[#090D16]">
@@ -1047,7 +1055,7 @@ export function RealWorldJourneySection({
                               </p>
                             </div>
                             <div className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-3">
-                              <span className="font-mono text-[10px] font-semibold text-[#64748B]">
+                              <span className=" text-[10px] font-semibold text-[#64748B]">
                                 EMERGENCY NEXT-OF-KIN
                               </span>
                               <p className="mt-1 text-sm font-semibold text-[#090D16]">
@@ -1056,18 +1064,18 @@ export function RealWorldJourneySection({
                             </div>
                           </div>
 
-                          {/* Toggleable BSL / Non-Verbal Communication Alert Card */}
+                          {/* Toggleable BSL / Non-Verbal Communication Directive Card */}
                           <div className="mt-3 rounded-md border border-[#00A896] bg-[#F8FAFC] p-3.5">
                             <div className="flex flex-wrap items-center justify-between gap-2">
-                              <span className="font-mono text-[10px] font-semibold text-[#00A896]">
-                                BSL / NON-VERBAL COMMUNICATION ALERT
+                              <span className=" text-[10px] font-semibold text-[#00A896]">
+                                BSL / Non-Verbal Communication Directive
                               </span>
                               <button
                                 type="button"
                                 onClick={() => setBslAlertExpanded((prev) => !prev)}
-                                className="pk-focus-ring cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#090D16] transition-colors hover:bg-[#090D16] hover:text-[#FFFFFF]"
+                                className="pk-focus-ring cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1  text-[10px] font-semibold text-[#090D16] transition-colors hover:bg-[#090D16] hover:text-[#FFFFFF]"
                               >
-                                {bslAlertExpanded ? 'Collapse Alert Card' : 'Expand Alert Card'}
+                                {bslAlertExpanded ? 'Collapse Directive' : 'Expand Directive'}
                               </button>
                             </div>
                             <p className="mt-1.5 text-sm font-semibold text-[#090D16]">
@@ -1080,7 +1088,7 @@ export function RealWorldJourneySection({
                             )}
                           </div>
 
-                          <div className="mt-3 flex items-center gap-2 rounded-md border border-[#090D16] bg-[#090D16] px-3 py-2 font-mono text-[11px] font-semibold text-[#FFFFFF]">
+                          <div className="mt-3 flex items-center gap-2 rounded-md border border-[#090D16] bg-[#090D16] px-3 py-2  text-[11px] font-semibold text-[#FFFFFF]">
                             <Lock size={12} className="shrink-0 text-[#FF6B00]" aria-hidden="true" />
                             <span>Workplace, Home &amp; Travel Partitions: SEALED</span>
                           </div>
@@ -1099,10 +1107,10 @@ export function RealWorldJourneySection({
                           }`}
                         >
                           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-current/20 pb-3">
-                            <span className="font-mono text-[11px] font-semibold">
+                            <span className=" text-[11px] font-semibold">
                               WORKSTATION MONITOR · {vault.workplace.language.toUpperCase()}
                             </span>
-                            <span className="rounded-md border border-current/30 px-2.5 py-0.5 font-mono text-[11px] font-semibold tabular-nums">
+                            <span className="rounded-md border border-current/30 px-2.5 py-0.5  text-[11px] font-semibold tabular-nums">
                               Desk Actuator: {vault.workplace.standingDeskCm}cm
                             </span>
                           </div>
@@ -1136,7 +1144,7 @@ export function RealWorldJourneySection({
                           {/* Interactive Monitor Quick Controls */}
                           <div className="mt-4 grid grid-cols-1 gap-3 border-t border-current/20 pt-3.5 sm:grid-cols-2">
                             <div className="flex items-center justify-between gap-2">
-                              <span className="font-mono text-[10px] font-semibold">
+                              <span className=" text-[10px] font-semibold">
                                 STANDING DESK HEIGHT
                               </span>
                               <div className="flex items-center gap-1.5">
@@ -1151,11 +1159,11 @@ export function RealWorldJourneySection({
                                       },
                                     }))
                                   }
-                                  className="pk-focus-ring cursor-pointer rounded-sm border border-current/40 px-2 py-0.5 font-mono text-xs font-semibold"
+                                  className="pk-focus-ring cursor-pointer rounded-sm border border-current/40 px-2 py-0.5  text-xs font-semibold"
                                 >
                                   -
                                 </button>
-                                <span className="font-mono text-xs font-semibold tabular-nums">
+                                <span className=" text-xs font-semibold tabular-nums">
                                   {vault.workplace.standingDeskCm}cm
                                 </span>
                                 <button
@@ -1169,7 +1177,7 @@ export function RealWorldJourneySection({
                                       },
                                     }))
                                   }
-                                  className="pk-focus-ring cursor-pointer rounded-sm border border-current/40 px-2 py-0.5 font-mono text-xs font-semibold"
+                                  className="pk-focus-ring cursor-pointer rounded-sm border border-current/40 px-2 py-0.5  text-xs font-semibold"
                                 >
                                   +
                                 </button>
@@ -1177,7 +1185,7 @@ export function RealWorldJourneySection({
                             </div>
 
                             <div className="flex items-center justify-between gap-2">
-                              <span className="font-mono text-[10px] font-semibold">
+                              <span className=" text-[10px] font-semibold">
                                 ZOOM SCALE
                               </span>
                               <div className="flex items-center gap-1">
@@ -1191,13 +1199,71 @@ export function RealWorldJourneySection({
                                         workplace: { ...prev.workplace, textScale: scale },
                                       }))
                                     }
-                                    className={`pk-focus-ring cursor-pointer rounded-sm border px-1.5 py-0.5 font-mono text-[10px] font-semibold ${
+                                    className={`pk-focus-ring cursor-pointer rounded-sm border px-1.5 py-0.5  text-[10px] font-semibold ${
                                       vault.workplace.textScale === scale
                                         ? 'border-[#00A896] bg-[#00A896] text-[#FFFFFF]'
                                         : 'border-current/30'
                                     }`}
                                   >
                                     {scale}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-between gap-2">
+                              <span className=" text-[10px] font-semibold">
+                                THEME
+                              </span>
+                              <div className="flex items-center gap-1">
+                                {(['High Contrast', 'Warm Paper', 'Standard'] as const).map((themeOption) => (
+                                  <button
+                                    key={themeOption}
+                                    type="button"
+                                    onClick={() =>
+                                      onVaultChange((prev) => ({
+                                        ...prev,
+                                        workplace: { ...prev.workplace, theme: themeOption },
+                                      }))
+                                    }
+                                    className={`pk-focus-ring cursor-pointer rounded-sm border px-1.5 py-0.5  text-[10px] font-semibold ${
+                                      vault.workplace.theme === themeOption
+                                        ? 'border-[#00A896] bg-[#00A896] text-[#FFFFFF]'
+                                        : 'border-current/30'
+                                    }`}
+                                  >
+                                    {themeOption === 'High Contrast'
+                                      ? 'Contrast'
+                                      : themeOption === 'Warm Paper'
+                                        ? 'Warm'
+                                        : 'Std'}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-between gap-2">
+                              <span className=" text-[10px] font-semibold">
+                                LANGUAGE
+                              </span>
+                              <div className="flex items-center gap-1">
+                                {(['English (UK)', 'Cymraeg', 'Français'] as const).map((lang) => (
+                                  <button
+                                    key={lang}
+                                    type="button"
+                                    onClick={() =>
+                                      onVaultChange((prev) => ({
+                                        ...prev,
+                                        workplace: { ...prev.workplace, language: lang },
+                                      }))
+                                    }
+                                    className={`pk-focus-ring cursor-pointer rounded-sm border px-1.5 py-0.5  text-[10px] font-semibold ${
+                                      vault.workplace.language === lang
+                                        ? 'border-[#00A896] bg-[#00A896] text-[#FFFFFF]'
+                                        : 'border-current/30'
+                                    }`}
+                                  >
+                                    {lang === 'English (UK)' ? 'EN-UK' : lang}
                                   </button>
                                 ))}
                               </div>
@@ -1210,10 +1276,10 @@ export function RealWorldJourneySection({
                       {activeScenario.id === 'car-hire' && (
                         <div className="rounded-lg border border-[#1E293B] bg-[#090D16] p-5 text-[#FFFFFF]">
                           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1E293B] pb-3">
-                            <span className="font-mono text-[11px] font-semibold text-[#00A896]">
+                            <span className=" text-[11px] font-semibold text-[#00A896]">
                               EV CABIN CONSOLE · PARTITION 02 ACTIVE
                             </span>
-                            <span className="font-mono text-xs font-semibold tabular-nums">
+                            <span className=" text-xs font-semibold tabular-nums">
                               Cabin: {vault.mobility.cabinTempC}°C · {vault.mobility.regenMode}
                             </span>
                           </div>
@@ -1248,11 +1314,16 @@ export function RealWorldJourneySection({
                                 />
                               </svg>
                               <div className="min-w-0">
-                                <span className="font-mono text-[10px] text-[#94A3B8]">
-                                  SEAT &amp; LUMBAR DIAGRAM
+                                <span className=" text-[10px] text-[#94A3B8]">
+                                  SEAT LUMBAR COORDINATES
                                 </span>
                                 <p className="mt-1 text-xs font-semibold text-[#FFFFFF]">
                                   {vault.mobility.seatProfile}
+                                </p>
+                                <p className="mt-0.5  text-[10px] text-[#00A896] tabular-nums">
+                                  {vault.mobility.seatProfile === 'Lumbar +2 · Mirror Set B'
+                                    ? 'X:+2mm · Y:+14mm · Recline 104°'
+                                    : 'X:0mm · Y:0mm · Recline 98°'}
                                 </p>
                                 <button
                                   type="button"
@@ -1268,7 +1339,7 @@ export function RealWorldJourneySection({
                                       },
                                     }))
                                   }
-                                  className="pk-focus-ring mt-2 cursor-pointer rounded-sm border border-[#334155] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#CBD5E1] hover:border-[#00A896]"
+                                  className="pk-focus-ring mt-2 cursor-pointer rounded-sm border border-[#334155] px-2 py-0.5  text-[10px] font-semibold text-[#CBD5E1] hover:border-[#00A896]"
                                 >
                                   Toggle Profile
                                 </button>
@@ -1279,7 +1350,7 @@ export function RealWorldJourneySection({
                             <div className="space-y-3 sm:col-span-7">
                               <div className="flex items-center justify-between rounded-md border border-[#1E293B] bg-[#090D16] p-3">
                                 <div>
-                                  <span className="font-mono text-[10px] text-[#94A3B8]">
+                                  <span className=" text-[10px] text-[#94A3B8]">
                                     CABIN CLIMATE
                                   </span>
                                   <p className="text-sm font-semibold text-[#FFFFFF] tabular-nums">
@@ -1298,7 +1369,7 @@ export function RealWorldJourneySection({
                                         },
                                       }))
                                     }
-                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1 font-mono text-xs font-semibold text-[#FFFFFF] hover:border-[#00A896]"
+                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1  text-xs font-semibold text-[#FFFFFF] hover:border-[#00A896]"
                                   >
                                     -
                                   </button>
@@ -1313,7 +1384,7 @@ export function RealWorldJourneySection({
                                         },
                                       }))
                                     }
-                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1 font-mono text-xs font-semibold text-[#FFFFFF] hover:border-[#00A896]"
+                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#334155] bg-[#090D16] px-2.5 py-1  text-xs font-semibold text-[#FFFFFF] hover:border-[#00A896]"
                                   >
                                     +
                                   </button>
@@ -1321,7 +1392,7 @@ export function RealWorldJourneySection({
                               </div>
 
                               <div className="rounded-md border border-[#1E293B] bg-[#090D16] p-3">
-                                <span className="font-mono text-[10px] text-[#94A3B8]">
+                                <span className=" text-[10px] text-[#94A3B8]">
                                   REGENERATIVE BRAKING PROFILE
                                 </span>
                                 <div className="mt-2 grid grid-cols-3 gap-1.5">
@@ -1335,7 +1406,7 @@ export function RealWorldJourneySection({
                                           mobility: { ...prev.mobility, regenMode: mode },
                                         }))
                                       }
-                                      className={`pk-focus-ring cursor-pointer rounded-sm border px-2 py-1 font-mono text-[10px] font-semibold transition-colors ${
+                                      className={`pk-focus-ring cursor-pointer rounded-sm border px-2 py-1  text-[10px] font-semibold transition-colors ${
                                         vault.mobility.regenMode === mode
                                           ? 'border-[#00A896] bg-[#00A896] text-[#FFFFFF]'
                                           : 'border-[#334155] bg-[#090D16] text-[#CBD5E1]'
@@ -1355,10 +1426,10 @@ export function RealWorldJourneySection({
                       {activeScenario.id === 'hotel-checkin' && (
                         <div className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-5 text-[#090D16]">
                           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2E8F0] pb-3">
-                            <span className="font-mono text-[11px] font-semibold text-[#00A896]">
+                            <span className=" text-[11px] font-semibold text-[#00A896]">
                               SUITE #402 CONTROL PANEL · PARTITION 03 ACTIVE
                             </span>
-                            <span className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#090D16] tabular-nums">
+                            <span className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-0.5  text-[11px] font-semibold text-[#090D16] tabular-nums">
                               {vault.hospitality.lightingKelvin}K · {vault.hospitality.sleepTempC}°C
                             </span>
                           </div>
@@ -1367,11 +1438,11 @@ export function RealWorldJourneySection({
                             {/* Live Warm Lighting Preview */}
                             <div className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-3.5">
                               <div className="flex items-center justify-between gap-2">
-                                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold text-[#64748B]">
+                                <span className="inline-flex items-center gap-1.5  text-[10px] font-semibold text-[#64748B]">
                                   <Sun size={12} className="text-[#FF6B00]" aria-hidden="true" />
                                   LIVE ROOM LIGHTING
                                 </span>
-                                <span className="font-mono text-xs font-semibold text-[#090D16]">
+                                <span className=" text-xs font-semibold text-[#090D16]">
                                   {vault.hospitality.lightingKelvin}K
                                 </span>
                               </div>
@@ -1401,7 +1472,7 @@ export function RealWorldJourneySection({
                                         hospitality: { ...prev.hospitality, lightingKelvin: k },
                                       }))
                                     }
-                                    className={`pk-focus-ring cursor-pointer rounded-sm border px-2 py-1 font-mono text-[10px] font-semibold ${
+                                    className={`pk-focus-ring cursor-pointer rounded-sm border px-2 py-1  text-[10px] font-semibold ${
                                       vault.hospitality.lightingKelvin === k
                                         ? 'border-[#090D16] bg-[#090D16] text-[#FFFFFF]'
                                         : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#334155]'
@@ -1417,7 +1488,7 @@ export function RealWorldJourneySection({
                             <div className="space-y-2.5">
                               <div className="flex items-center justify-between rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-3">
                                 <div>
-                                  <span className="font-mono text-[10px] text-[#64748B]">
+                                  <span className=" text-[10px] text-[#64748B]">
                                     SLEEP CLIMATE
                                   </span>
                                   <p className="text-xs font-semibold text-[#090D16] tabular-nums">
@@ -1436,7 +1507,7 @@ export function RealWorldJourneySection({
                                         },
                                       }))
                                     }
-                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#E2E8F0] bg-[#FFFFFF] px-2 py-0.5 font-mono text-xs font-semibold"
+                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#E2E8F0] bg-[#FFFFFF] px-2 py-0.5  text-xs font-semibold"
                                   >
                                     -
                                   </button>
@@ -1451,7 +1522,7 @@ export function RealWorldJourneySection({
                                         },
                                       }))
                                     }
-                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#E2E8F0] bg-[#FFFFFF] px-2 py-0.5 font-mono text-xs font-semibold"
+                                    className="pk-focus-ring cursor-pointer rounded-sm border border-[#E2E8F0] bg-[#FFFFFF] px-2 py-0.5  text-xs font-semibold"
                                   >
                                     +
                                   </button>
@@ -1460,7 +1531,7 @@ export function RealWorldJourneySection({
 
                               <div className="flex items-center justify-between rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-3">
                                 <div>
-                                  <span className="font-mono text-[10px] text-[#64748B]">
+                                  <span className=" text-[10px] text-[#64748B]">
                                     TV SUBTITLES · BEDDING
                                   </span>
                                   <p className="text-xs font-semibold text-[#090D16]">
@@ -1478,7 +1549,7 @@ export function RealWorldJourneySection({
                                       },
                                     }))
                                   }
-                                  className="pk-focus-ring cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#090D16]"
+                                  className="pk-focus-ring cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1  text-[10px] font-semibold text-[#090D16]"
                                 >
                                   Toggle Captions
                                 </button>
@@ -1492,37 +1563,63 @@ export function RealWorldJourneySection({
                       {activeScenario.id === 'public-kiosk' && (
                         <div className="rounded-lg border-2 border-[#FFFFFF] bg-[#090D16] p-5 text-[#FFFFFF]">
                           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#334155] pb-3">
-                            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold text-[#00A896]">
+                            <span className="inline-flex items-center gap-1.5  text-[11px] font-semibold text-[#00A896]">
                               <Volume2 size={14} aria-hidden="true" />
                               HIGH-CONTRAST TERMINAL · AUDIO-ASSIST {audioAssistPreview ? 'ON' : 'MUTED'}
                             </span>
                             <button
                               type="button"
                               onClick={() => setAudioAssistPreview((prev) => !prev)}
-                              className="pk-focus-ring cursor-pointer rounded-md border border-[#FFFFFF] px-2.5 py-0.5 font-mono text-[11px] font-semibold hover:bg-[#FFFFFF] hover:text-[#090D16]"
+                              className="pk-focus-ring cursor-pointer rounded-md border border-[#FFFFFF] px-2.5 py-0.5  text-[11px] font-semibold hover:bg-[#FFFFFF] hover:text-[#090D16]"
                             >
                               {audioAssistPreview ? 'Audio Readout: Active' : 'Audio Readout: Muted'}
                             </button>
                           </div>
 
                           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                            <div className="rounded-md border-2 border-[#FFFFFF] bg-[#090D16] p-4">
-                              <p className="text-base font-semibold">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setKioskActionMessage(
+                                  audioAssistPreview
+                                    ? `Audio Assist Active: Printing large-text boarding pass (${vault.public.touchTarget}).`
+                                    : `High-Contrast Print Queued (${vault.public.touchTarget}).`,
+                                )
+                              }
+                              className="pk-focus-ring pk-card-hover cursor-pointer rounded-md border-2 border-[#FFFFFF] bg-[#090D16] p-4 text-left hover:border-[#00A896]"
+                            >
+                              <p className="text-base font-semibold text-[#FFFFFF]">
                                 Print Boarding Pass
                               </p>
                               <p className="mt-1 text-xs text-[#CBD5E1]">
                                 {vault.public.touchTarget} · {vault.public.extendedTimeoutSec}s timeout
                               </p>
-                            </div>
-                            <div className="rounded-md border-2 border-[#FFFFFF] bg-[#090D16] p-4">
-                              <p className="text-base font-semibold">
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setKioskActionMessage(
+                                  audioAssistPreview
+                                    ? 'Audio Assist Active: Gate assistance request sent via local terminal.'
+                                    : 'Gate Assistance Requested via local terminal.',
+                                )
+                              }
+                              className="pk-focus-ring pk-card-hover cursor-pointer rounded-md border-2 border-[#FFFFFF] bg-[#090D16] p-4 text-left hover:border-[#00A896]"
+                            >
+                              <p className="text-base font-semibold text-[#FFFFFF]">
                                 Request Gate Assistance
                               </p>
                               <p className="mt-1 text-xs text-[#CBD5E1]">
                                 3.5mm tactile audio guidance active
                               </p>
-                            </div>
+                            </button>
                           </div>
+
+                          {kioskActionMessage && (
+                            <div className="mt-3 rounded-md border border-[#00A896] bg-[#090D16] px-3 py-2  text-[11px] font-semibold text-[#00A896]">
+                              {kioskActionMessage}
+                            </div>
+                          )}
                         </div>
                       )}
 
@@ -1530,17 +1627,17 @@ export function RealWorldJourneySection({
                       {activeScenario.id === 'fitness-studio' && (
                         <div className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-5 text-[#090D16]">
                           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2E8F0] pb-3">
-                            <span className="font-mono text-[11px] font-semibold text-[#00A896]">
+                            <span className=" text-[11px] font-semibold text-[#00A896]">
                               ADAPTIVE GYM CONSOLE · PARTITION 04 ACTIVE
                             </span>
-                            <span className="rounded-md border border-[#090D16] bg-[#F8FAFC] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#090D16]">
+                            <span className="rounded-md border border-[#090D16] bg-[#F8FAFC] px-2.5 py-0.5  text-[11px] font-semibold text-[#090D16]">
                               High-Visibility Font
                             </span>
                           </div>
 
                           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                             <div className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-4">
-                              <span className="font-mono text-[10px] text-[#64748B]">
+                              <span className=" text-[10px] text-[#64748B]">
                                 MACHINE CALIBRATION
                               </span>
                               <p className="mt-1 text-base font-semibold text-[#090D16]">
@@ -1560,14 +1657,14 @@ export function RealWorldJourneySection({
                                     },
                                   }))
                                 }
-                                className="pk-focus-ring mt-2.5 cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#090D16]"
+                                className="pk-focus-ring mt-2.5 cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1  text-[10px] font-semibold text-[#090D16]"
                               >
                                 Switch Calibration
                               </button>
                             </div>
 
                             <div className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-4">
-                              <span className="font-mono text-[10px] text-[#64748B]">
+                              <span className=" text-[10px] text-[#64748B]">
                                 TARGET HEART-RATE ZONE
                               </span>
                               <p className="mt-1 text-base font-semibold text-[#090D16] tabular-nums">
@@ -1587,7 +1684,7 @@ export function RealWorldJourneySection({
                                     },
                                   }))
                                 }
-                                className="pk-focus-ring mt-2.5 cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#090D16]"
+                                className="pk-focus-ring mt-2.5 cursor-pointer rounded-sm border border-[#090D16] bg-[#FFFFFF] px-2.5 py-1  text-[10px] font-semibold text-[#090D16]"
                               >
                                 Switch Target Zone
                               </button>
@@ -1612,6 +1709,7 @@ export function RealWorldJourneySection({
                 </AnimatePresence>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

@@ -102,7 +102,7 @@ export function PersonaKeyTokenSvg({ status }: PersonaKeyTokenSvgProps) {
           y="38"
           fill="#E2E8F0"
           fontSize="5.5"
-          fontFamily="JetBrains Mono, monospace"
+          fontFamily="Inter, sans-serif"
           letterSpacing="0.8"
         >
           PK-NFC
@@ -110,10 +110,10 @@ export function PersonaKeyTokenSvg({ status }: PersonaKeyTokenSvgProps) {
       </svg>
 
       <div className="min-w-0">
-        <p className="font-mono text-[11px] font-semibold text-[var(--pk-heading)]">
+        <p className=" text-[11px] font-semibold text-[var(--pk-heading)]">
           Hardware Token
         </p>
-        <p className="mt-0.5 flex items-center gap-1.5 font-mono text-[11px] text-[var(--pk-muted)]">
+        <p className="mt-0.5 flex items-center gap-1.5  text-[11px] text-[var(--pk-muted)]">
           <span
             className={`inline-block h-2 w-2 shrink-0 rounded-xs ${
               status === 'active' ? 'bg-[#00A896]' : 'bg-[#FF6B00]'

@@ -153,7 +153,7 @@ Set-ItemProperty -Path "HKCU:\\Control Panel\\Accessibility\\HighContrast" -Name
           aria-expanded={isOpen}
           aria-controls="partner-sdk-drawer"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="pk-focus-ring inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface-muted)] px-3.5 py-2 font-mono text-xs font-medium text-[var(--pk-heading)] transition-colors hover:border-[#00A896] whitespace-nowrap"
+          className="pk-focus-ring inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface-muted)] px-3.5 py-2  text-xs font-medium text-[var(--pk-heading)] transition-colors hover:border-[#00A896] whitespace-nowrap"
         >
           {isOpen ? 'Hide Technical Specs' : 'Inspect Partner SDK'}
           {isOpen ? (
@@ -184,7 +184,7 @@ Set-ItemProperty -Path "HKCU:\\Control Panel\\Accessibility\\HighContrast" -Name
                   aria-selected={isSelected}
                   aria-controls="partner-sdk-tabpanel"
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`pk-focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-md border px-3 py-1.5 font-mono text-xs font-medium transition-colors sm:whitespace-nowrap ${
+                  className={`pk-focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-md border px-3 py-1.5  text-xs font-medium transition-colors sm:whitespace-nowrap ${
                     isSelected
                       ? 'border-[#090D16] bg-[#090D16] text-[#FFFFFF]'
                       : 'border-[var(--pk-border)] bg-[#FFFFFF] text-[var(--pk-text)] hover:border-[#00A896] hover:text-[var(--pk-heading)]'
@@ -202,12 +202,12 @@ Set-ItemProperty -Path "HKCU:\\Control Panel\\Accessibility\\HighContrast" -Name
           <pre
             id="partner-sdk-tabpanel"
             role="tabpanel"
-            className="mt-4 max-h-[340px] overflow-auto rounded-md border border-[#1E293B] bg-[#090D16] p-4 font-mono text-xs leading-relaxed text-[#F8FAFC]"
+            className="mt-4 max-h-[340px] overflow-auto rounded-md border border-[#1E293B] bg-[#090D16] p-4  text-xs leading-relaxed text-[#F8FAFC]"
           >
             <code>{activeTab.content}</code>
           </pre>
 
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-[var(--pk-muted)]">
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2  text-[11px] text-[var(--pk-muted)]">
             <span className="font-medium text-[var(--pk-heading)]">
               {activeTab.summary}
             </span>
