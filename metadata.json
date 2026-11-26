@@ -1,0 +1,5 @@
+{
+  "name": "PersonaKey",
+  "description": "Portable accessibility preferences and identity infrastructure built for high-trust public and enterprise services.",
+  "requestFramePermissions": []
+}
