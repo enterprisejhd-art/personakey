@@ -129,14 +129,14 @@ function StatusBadge({ status }: { status: MatrixStatus }) {
   switch (status) {
     case 'Core Architecture':
       return (
-        <span className="inline-flex items-center gap-1 rounded-md border border-[#0F8B8D] bg-[#0F8B8D] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#FFFFFF] whitespace-nowrap">
+        <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#00A896] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#FFFFFF] whitespace-nowrap">
           <Check size={11} strokeWidth={2.5} aria-hidden="true" />
           Core Architecture
         </span>
       );
     case 'Ecosystem-Locked':
       return (
-        <span className="inline-flex items-center rounded-md border border-[#D4A338] bg-[#F8FAFC] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#0B1E33] whitespace-nowrap">
+        <span className="inline-flex items-center rounded-md border border-[#FF6B00] bg-[#F8FAFC] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#090D16] whitespace-nowrap">
           Ecosystem-Locked
         </span>
       );
@@ -176,10 +176,10 @@ export function NeutralitySection({
         {/* Section Header */}
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs font-medium tracking-[0.04em] text-[#64748B]">
+            <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
               BUILT FOR NEUTRALITY
             </p>
-            <h2 className="pk-scaled-heading mt-2.5 font-semibold text-balance text-[#0B1E33]">
+            <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[#090D16]">
               Existing tools sync inside walled gardens. PersonaKey bridges across them.
             </h2>
             <p className="pk-scaled-small mt-2.5 text-[#334155]">
@@ -187,20 +187,20 @@ export function NeutralitySection({
             </p>
           </div>
 
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 font-mono text-[11px] font-medium text-[#0B1E33]">
-            <Info size={13} className="text-[#0F8B8D]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 font-mono text-[11px] font-medium text-[#090D16]">
+            <Info size={13} className="text-[#00A896]" aria-hidden="true" />
             Click any row to compare architecture
           </span>
         </div>
 
         {/* Comparison Table */}
-        <div className="mt-8 overflow-x-auto rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] shadow-xs">
+        <div className="mt-8 overflow-x-auto rounded-lg border border-[#E2E8F0] bg-[#FFFFFF]">
           <table className="w-full min-w-[940px] border-collapse text-left">
             <thead>
               <tr className="border-b border-[#E2E8F0] bg-[#F8FAFC]">
                 <th
                   scope="col"
-                  className="px-5 py-3.5 text-xs font-semibold tracking-[-0.01em] text-[#0B1E33]"
+                  className="px-5 py-3.5 text-xs font-semibold tracking-[-0.01em] text-[#090D16]"
                 >
                   Platform / Ecosystem
                 </th>
@@ -208,7 +208,7 @@ export function NeutralitySection({
                   <th
                     key={column.key}
                     scope="col"
-                    className="px-3.5 py-3.5 text-center text-xs font-semibold tracking-[-0.01em] text-[#0B1E33]"
+                    className="px-3.5 py-3.5 text-center text-xs font-semibold tracking-[-0.01em] text-[#090D16]"
                   >
                     {column.label}
                   </th>
@@ -239,16 +239,16 @@ export function NeutralitySection({
                         className="pk-focus-ring w-full cursor-pointer text-left"
                       >
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-sm font-semibold text-[#0B1E33]">
+                          <span className="text-sm font-semibold text-[#090D16]">
                             {row.platform}
                           </span>
                           {row.isPersonaKey && (
-                            <span className="rounded-sm border border-[#0F8B8D] bg-[#FFFFFF] px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#0F8B8D]">
+                            <span className="rounded-sm border border-[#00A896] bg-[#FFFFFF] px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#00A896]">
                               PORTABLE
                             </span>
                           )}
                           {isSelected && (
-                            <span className="rounded-sm bg-[#0B1E33] px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#FFFFFF]">
+                            <span className="rounded-sm bg-[#090D16] px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#FFFFFF]">
                               ACTIVE
                             </span>
                           )}
@@ -274,7 +274,7 @@ export function NeutralitySection({
         </div>
 
         {/* Clickable Row Detail Strip */}
-        <div className="mt-4 rounded-lg border border-[#0F8B8D] bg-[#FFFFFF] p-5 shadow-xs">
+        <div className="mt-4 rounded-lg border border-[#00A896] bg-[#FFFFFF] p-5">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeRow.platform}
@@ -288,10 +288,10 @@ export function NeutralitySection({
                 <div className="flex flex-wrap items-center gap-2">
                   <ShieldCheck
                     size={15}
-                    className="shrink-0 text-[#0F8B8D]"
+                    className="shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
-                  <span className="font-mono text-xs font-semibold text-[#0B1E33]">
+                  <span className="font-mono text-xs font-semibold text-[#090D16]">
                     {activeRow.platform.toUpperCase()} · ARCHITECTURAL COMPARISON
                   </span>
                 </div>
@@ -300,7 +300,7 @@ export function NeutralitySection({
                 </p>
               </div>
 
-              <span className="shrink-0 rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1.5 font-mono text-[11px] font-semibold text-[#0B1E33]">
+              <span className="shrink-0 rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1.5 font-mono text-[11px] font-semibold text-[#090D16]">
                 {activeRow.isPersonaKey
                   ? '6/6 Core Capabilities Verified'
                   : 'PersonaKey Bridges All 6 Gaps'}

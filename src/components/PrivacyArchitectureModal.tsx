@@ -52,10 +52,10 @@ export function PrivacyArchitectureModal({
         <div className="divide-y divide-[#E2E8F0] rounded-lg border border-[#E2E8F0] bg-[#F8FAFC]">
           {PRIVACY_CONTROLS.map((control) => (
             <div key={control.code} className="p-4">
-              <p className="font-mono text-[11px] font-semibold text-[#0B1E33]">
+              <p className="font-mono text-[11px] font-semibold text-[#00A896]">
                 {control.code}
               </p>
-              <h3 className="mt-1 text-sm font-semibold text-[#0B1E33]">
+              <h3 className="mt-1 text-sm font-semibold text-[#090D16]">
                 {control.title}
               </h3>
               <p className="mt-1.5 text-xs leading-relaxed text-[#334155]">
@@ -72,7 +72,7 @@ export function PrivacyArchitectureModal({
           <button
             type="button"
             onClick={onClose}
-            className="pk-focus-ring cursor-pointer rounded-md bg-[#0B1E33] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#334155]"
+            className="pk-focus-ring cursor-pointer rounded-md bg-[#090D16] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#1E293B]"
           >
             Close
           </button>

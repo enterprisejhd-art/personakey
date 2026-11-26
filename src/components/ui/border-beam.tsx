@@ -19,8 +19,8 @@ export function BorderBeam({
   size = 64,
   duration = 5,
   delay = 0,
-  colorFrom = '#0F8B8D',
-  colorTo = '#D4A338',
+  colorFrom = '#00A896',
+  colorTo = '#FF6B00',
   borderWidth = 1,
   reverse = false,
   initialOffset = 0,
@@ -32,7 +32,7 @@ export function BorderBeam({
     return (
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 rounded-[inherit] border border-[#0F8B8D] ${className}`}
+        className={`pointer-events-none absolute inset-0 rounded-[inherit] border border-[#00A896] ${className}`}
       />
     );
   }

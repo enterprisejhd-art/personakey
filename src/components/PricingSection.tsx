@@ -1,4 +1,4 @@
-import { Check, Nfc } from 'lucide-react';
+import { ArrowRight, Check, Nfc } from 'lucide-react';
 
 interface PricingSectionProps {
   onBookPilot: () => void;
@@ -19,10 +19,10 @@ export function PricingSection({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <p className="font-mono text-xs font-medium tracking-[0.04em] text-[var(--pk-muted)]">
+          <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
             COMMERCIAL MODEL &amp; PRICING
           </p>
-          <h2 className="pk-scaled-heading mt-2.5 font-semibold text-balance text-[var(--pk-heading)]">
+          <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[var(--pk-heading)]">
             Built for controlled workplace pilots and individual portability.
           </h2>
         </div>
@@ -30,7 +30,7 @@ export function PricingSection({
         {/* 3-Card Structured Pricing Grid */}
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
           {/* Card 1: PersonaKey Token + App */}
-          <article className="flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6 sm:p-7">
+          <article className="pk-card-hover flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6 sm:p-7">
             <div>
               <p className="font-mono text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)]">
                 FOR INDIVIDUALS
@@ -41,7 +41,7 @@ export function PricingSection({
 
               <div className="mt-4 border-b border-[var(--pk-border)] pb-5">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-semibold tracking-[-0.02em] text-[var(--pk-heading)] tabular-nums">
+                  <span className="font-display text-3xl font-bold tracking-[-0.03em] text-[var(--pk-heading)] tabular-nums">
                     £79
                   </span>
                   <span className="text-xs font-medium text-[var(--pk-muted)]">
@@ -50,7 +50,7 @@ export function PricingSection({
                 </div>
                 <div className="mt-2.5 inline-flex items-center gap-2 font-mono text-[11px] text-[var(--pk-text)]">
                   <span
-                    className="inline-flex h-4 w-4 items-center justify-center rounded-xs bg-[#D4A338] text-[#0B1E33]"
+                    className="inline-flex h-4 w-4 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
                     aria-hidden="true"
                   >
                     <Nfc size={11} strokeWidth={2.25} />
@@ -64,7 +64,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Core Persona Profile (15–25 settings)</span>
@@ -73,7 +73,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Local selective-disclosure controls</span>
@@ -82,7 +82,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Unlimited session activations</span>
@@ -91,7 +91,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Automatic session reversal</span>
@@ -103,15 +103,18 @@ export function PricingSection({
               <button
                 type="button"
                 onClick={onJoinBeta}
-                className="pk-focus-ring inline-flex w-full cursor-pointer items-center justify-center rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2.5 text-sm font-medium text-[#0B1E33] transition-colors hover:border-[#0B1E33] hover:bg-[#F8FAFC] sm:whitespace-nowrap"
+                className="group pk-focus-ring inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2.5 text-sm font-semibold text-[#090D16] transition-colors hover:border-[#00A896] hover:bg-[#F8FAFC] sm:whitespace-nowrap"
               >
-                Join Consumer Beta
+                <span>Join Consumer Beta</span>
+                <span className="pk-cta-arrow" aria-hidden="true">
+                  <ArrowRight size={14} strokeWidth={2.25} />
+                </span>
               </button>
             </div>
           </article>
 
           {/* Card 2: PersonaKey Plus */}
-          <article className="flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6 sm:p-7">
+          <article className="pk-card-hover flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6 sm:p-7">
             <div>
               <p className="font-mono text-[11px] font-medium tracking-[0.04em] text-[var(--pk-muted)]">
                 OPTIONAL SOFTWARE TIER
@@ -122,7 +125,7 @@ export function PricingSection({
 
               <div className="mt-4 border-b border-[var(--pk-border)] pb-5">
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-3xl font-semibold tracking-[-0.02em] text-[var(--pk-heading)] tabular-nums">
+                  <span className="font-display text-3xl font-bold tracking-[-0.03em] text-[var(--pk-heading)] tabular-nums">
                     £5.99
                   </span>
                   <span className="text-xs font-medium text-[var(--pk-muted)]">
@@ -139,7 +142,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Multi-context profiles (Work, Travel, Evening)</span>
@@ -148,7 +151,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Encrypted cloud backup</span>
@@ -157,7 +160,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Full audit history</span>
@@ -166,7 +169,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Automated context rules</span>
@@ -178,15 +181,18 @@ export function PricingSection({
               <button
                 type="button"
                 onClick={onJoinBeta}
-                className="pk-focus-ring inline-flex w-full cursor-pointer items-center justify-center rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2.5 text-sm font-medium text-[#0B1E33] transition-colors hover:border-[#0B1E33] hover:bg-[#F8FAFC] sm:whitespace-nowrap"
+                className="group pk-focus-ring inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2.5 text-sm font-semibold text-[#090D16] transition-colors hover:border-[#00A896] hover:bg-[#F8FAFC] sm:whitespace-nowrap"
               >
-                Join Beta Waitlist
+                <span>Join Beta Waitlist</span>
+                <span className="pk-cta-arrow" aria-hidden="true">
+                  <ArrowRight size={14} strokeWidth={2.25} />
+                </span>
               </button>
             </div>
           </article>
 
           {/* Card 3: Workplace & Coworking Licence */}
-          <article className="flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#0F8B8D] bg-[var(--pk-surface)] p-6 sm:p-7">
+          <article className="pk-card-hover-orange flex h-full flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#FF6B00] bg-[var(--pk-surface)] p-6 sm:p-7">
             <div>
               <p className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[var(--pk-heading)]">
                 B2B PILOT &amp; SCALE
@@ -197,7 +203,7 @@ export function PricingSection({
 
               <div className="mt-4 border-b border-[var(--pk-border)] pb-5">
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-3xl font-semibold tracking-[-0.02em] text-[var(--pk-heading)] tabular-nums">
+                  <span className="font-display text-3xl font-bold tracking-[-0.03em] text-[var(--pk-heading)] tabular-nums">
                     £4.50
                   </span>
                   <span className="text-xs font-medium text-[var(--pk-muted)]">
@@ -214,7 +220,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Windows / browser workspace adaptors</span>
@@ -223,7 +229,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Compatible smart-desk lighting bridge</span>
@@ -232,7 +238,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>B2B admin dashboard</span>
@@ -241,7 +247,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Role-based access</span>
@@ -250,7 +256,7 @@ export function PricingSection({
                   <Check
                     size={16}
                     strokeWidth={2.25}
-                    className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                    className="mt-0.5 shrink-0 text-[#00A896]"
                     aria-hidden="true"
                   />
                   <span>Pilot onboarding support</span>
@@ -262,25 +268,31 @@ export function PricingSection({
               <button
                 type="button"
                 onClick={onBookPilot}
-                className="pk-focus-ring inline-flex w-full cursor-pointer items-center justify-center rounded-md bg-[var(--pk-cta-bg)] px-4 py-2.5 text-sm font-medium text-[var(--pk-cta-text)] transition-colors hover:bg-[var(--pk-cta-hover)] sm:whitespace-nowrap"
+                className="group pk-focus-ring inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-md bg-[var(--pk-cta-bg)] px-4 py-2.5 text-sm font-semibold text-[var(--pk-cta-text)] transition-colors hover:bg-[var(--pk-cta-hover)] sm:whitespace-nowrap"
               >
-                Book a Workplace Pilot
+                <span>Book a Workplace Pilot</span>
+                <span className="pk-cta-arrow" aria-hidden="true">
+                  <ArrowRight size={14} strokeWidth={2.25} />
+                </span>
               </button>
             </div>
           </article>
         </div>
 
         {/* Single-Row Enterprise Callout Bar */}
-        <div className="mt-8 flex flex-col justify-between gap-4 rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] px-6 py-4 sm:flex-row sm:items-center">
+        <div className="pk-card-hover mt-8 flex flex-col justify-between gap-4 rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] px-6 py-4 sm:flex-row sm:items-center">
           <p className="pk-scaled-small font-medium text-[var(--pk-heading)]">
             Building workplace hardware, smart-building systems, or hospitality platforms?
           </p>
           <button
             type="button"
             onClick={onEnquireSdk}
-            className="pk-focus-ring inline-flex shrink-0 cursor-pointer items-center justify-center rounded-md border border-[#0B1E33] bg-[#FFFFFF] px-4 py-2 text-center text-xs font-semibold text-[#0B1E33] transition-colors hover:bg-[#0B1E33] hover:text-[#FFFFFF] sm:whitespace-nowrap"
+            className="group pk-focus-ring inline-flex shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-md border border-[#090D16] bg-[#FFFFFF] px-4 py-2 text-center text-xs font-semibold text-[#090D16] transition-colors hover:bg-[#090D16] hover:text-[#FFFFFF] sm:whitespace-nowrap"
           >
-            Enquire about PersonaKey SDK / API Licensing
+            <span>Enquire about PersonaKey SDK / API Licensing</span>
+            <span className="pk-cta-arrow" aria-hidden="true">
+              <ArrowRight size={13} strokeWidth={2.25} />
+            </span>
           </button>
         </div>
       </div>

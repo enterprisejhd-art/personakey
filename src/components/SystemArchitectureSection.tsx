@@ -49,7 +49,7 @@ function PartBadgeIcon({ kind }: { kind: ArchitecturePart['kind'] }) {
   if (kind === 'key') {
     return (
       <span
-        className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-xs bg-[#D4A338] text-[#0B1E33]"
+        className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
         aria-hidden="true"
       >
         <Nfc size={13} strokeWidth={2.25} />
@@ -59,7 +59,7 @@ function PartBadgeIcon({ kind }: { kind: ArchitecturePart['kind'] }) {
   if (kind === 'receiver') {
     return (
       <span
-        className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-xs border border-[#0F8B8D] bg-[#F8FAFC] text-[#0F8B8D]"
+        className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-xs border border-[#00A896] bg-[#F8FAFC] text-[#00A896]"
         aria-hidden="true"
       >
         <Radio size={13} strokeWidth={2.25} />
@@ -68,7 +68,7 @@ function PartBadgeIcon({ kind }: { kind: ArchitecturePart['kind'] }) {
   }
   return (
     <span
-      className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-xs border border-[#0F8B8D] bg-[#F8FAFC] text-[#0F8B8D]"
+      className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-xs border border-[#00A896] bg-[#F8FAFC] text-[#00A896]"
       aria-hidden="true"
     >
       <RotateCcw size={13} strokeWidth={2.25} />
@@ -86,10 +86,10 @@ export function SystemArchitectureSection() {
         {/* Section Header */}
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs font-medium tracking-[0.04em] text-[var(--pk-muted)]">
+            <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
               3-PART SYSTEM ARCHITECTURE
             </p>
-            <h2 className="pk-scaled-heading mt-2 font-semibold text-balance text-[var(--pk-heading)]">
+            <h2 className="pk-scaled-heading font-display mt-2 font-bold text-balance text-[#090D16]">
               How one personal key interacts safely with any service provider.
             </h2>
             <p className="pk-scaled-small mt-2.5 text-[var(--pk-text)]">
@@ -97,8 +97,8 @@ export function SystemArchitectureSection() {
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface)] px-3 py-1.5 font-mono text-[11px] font-medium text-[#0B1E33]">
-            <KeyRound size={13} className="text-[#0F8B8D]" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface)] px-3 py-1.5 font-mono text-[11px] font-medium text-[#090D16]">
+            <KeyRound size={13} className="text-[#00A896]" aria-hidden="true" />
             Hardware-to-Receiver · No Cloud Sync
           </div>
         </div>
@@ -107,7 +107,11 @@ export function SystemArchitectureSection() {
         <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_28px_1fr_28px_1fr] lg:items-stretch lg:gap-0">
           {ARCHITECTURE_PARTS.map((part, index) => (
             <div key={part.step} className="contents">
-              <article className="flex flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-5 shadow-xs">
+              <article
+                className={`flex flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-5 ${
+                  part.kind === 'key' ? 'pk-card-hover-orange' : 'pk-card-hover'
+                }`}
+              >
                 <div>
                   <div className="flex items-center justify-between gap-2 border-b border-[var(--pk-border)] pb-3">
                     <span className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[#64748B]">
@@ -116,7 +120,7 @@ export function SystemArchitectureSection() {
                     <PartBadgeIcon kind={part.kind} />
                   </div>
 
-                  <h3 className="mt-4 text-base font-semibold tracking-[-0.01em] text-[var(--pk-heading)]">
+                  <h3 className="font-display mt-4 text-base font-bold tracking-[-0.02em] text-[#090D16]">
                     {part.title}
                   </h3>
                   <p className="mt-0.5 font-mono text-xs font-medium text-[#334155]">
@@ -130,7 +134,7 @@ export function SystemArchitectureSection() {
                         className="pk-scaled-small flex items-start gap-2 text-[#334155]"
                       >
                         <span
-                          className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-xs bg-[#0B1E33]"
+                          className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-xs bg-[#090D16]"
                           aria-hidden="true"
                         />
                         <span>{bullet}</span>
@@ -140,7 +144,7 @@ export function SystemArchitectureSection() {
                 </div>
 
                 <div className="mt-5 border-t border-[var(--pk-border)] pt-3">
-                  <span className="font-mono text-[11px] font-semibold text-[#0B1E33]">
+                  <span className="font-mono text-[11px] font-semibold text-[#090D16]">
                     {part.guarantee}
                   </span>
                 </div>

@@ -1,4 +1,4 @@
-import { Building2, Check, Nfc, UserCheck } from 'lucide-react';
+import { ArrowRight, Building2, Check, Nfc, UserCheck } from 'lucide-react';
 
 interface MarketOpportunitySectionProps {
   onBookPilot: () => void;
@@ -65,15 +65,15 @@ export function MarketOpportunitySection({
         {/* 1. Dual-Sided Value Proposition (2-Column Executive Layout) */}
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch">
           {/* Left: For Individuals & Accessibility Users */}
-          <article className="flex flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6 shadow-xs">
+          <article className="pk-card-hover flex flex-col justify-between rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] p-6">
             <div>
               <div className="flex items-center justify-between gap-2 border-b border-[var(--pk-border)] pb-3.5">
-                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[#0B1E33]">
-                  <UserCheck size={15} className="text-[#0F8B8D]" aria-hidden="true" />
+                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[#090D16]">
+                  <UserCheck size={15} className="text-[#00A896]" aria-hidden="true" />
                   FOR INDIVIDUALS &amp; ACCESSIBILITY USERS
                 </span>
                 <span
-                  className="inline-flex h-5 w-5 items-center justify-center rounded-xs bg-[#D4A338] text-[#0B1E33]"
+                  className="inline-flex h-5 w-5 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
                   title="Hardware Key"
                   aria-hidden="true"
                 >
@@ -81,21 +81,21 @@ export function MarketOpportunitySection({
                 </span>
               </div>
 
-              <h3 className="mt-4 text-lg font-semibold tracking-[-0.02em] text-[#0B1E33]">
+              <h3 className="mt-4 text-lg font-semibold tracking-[-0.02em] text-[#090D16]">
                 Carry one key everywhere; protect medical and personal privacy; eliminate daily reconfiguration friction.
               </h3>
 
               <ul className="mt-4 space-y-2.5 border-t border-[var(--pk-border)] pt-4">
                 <li className="flex items-start gap-2.5 text-sm text-[#334155]">
-                  <Check size={16} className="mt-0.5 shrink-0 text-[#0F8B8D]" aria-hidden="true" />
+                  <Check size={16} className="mt-0.5 shrink-0 text-[#00A896]" aria-hidden="true" />
                   <span>
-                    <strong className="font-semibold text-[#0B1E33]">£79 PersonaKey Hardware Device</strong> — offline-first NFC/BLE encrypted key storing all 5 partitions locally.
+                    <strong className="font-semibold text-[#090D16]">£79 PersonaKey Hardware Device</strong> — offline-first NFC/BLE encrypted key storing all 5 partitions locally.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5 text-sm text-[#334155]">
-                  <Check size={16} className="mt-0.5 shrink-0 text-[#0F8B8D]" aria-hidden="true" />
+                  <Check size={16} className="mt-0.5 shrink-0 text-[#00A896]" aria-hidden="true" />
                   <span>
-                    <strong className="font-semibold text-[#0B1E33]">Optional £5.99/mo PersonaKey Plus</strong> — encrypted offline backup &amp; multi-profile management.
+                    <strong className="font-semibold text-[#090D16]">Optional £5.99/mo PersonaKey Plus</strong> — encrypted offline backup &amp; multi-profile management.
                   </span>
                 </li>
               </ul>
@@ -105,41 +105,44 @@ export function MarketOpportunitySection({
               <button
                 type="button"
                 onClick={onJoinBeta}
-                className="pk-focus-ring inline-flex cursor-pointer items-center justify-center rounded-md border border-[#0B1E33] bg-[#FFFFFF] px-4 py-2 text-xs font-semibold text-[#0B1E33] transition-colors hover:bg-[#0B1E33] hover:text-[#FFFFFF]"
+                className="group pk-focus-ring inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-md border border-[#090D16] bg-[#FFFFFF] px-4 py-2 text-xs font-semibold text-[#090D16] transition-colors hover:bg-[#090D16] hover:text-[#FFFFFF]"
               >
-                Join Consumer Beta
+                <span>Join Consumer Beta</span>
+                <span className="pk-cta-arrow" aria-hidden="true">
+                  <ArrowRight size={13} strokeWidth={2.25} />
+                </span>
               </button>
             </div>
           </article>
 
           {/* Right: For Service Providers & Enterprises */}
-          <article className="flex flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#0F8B8D] bg-[var(--pk-surface)] p-6 shadow-xs">
+          <article className="pk-card-hover flex flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#00A896] bg-[var(--pk-surface)] p-6">
             <div>
               <div className="flex items-center justify-between gap-2 border-b border-[var(--pk-border)] pb-3.5">
-                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[#0B1E33]">
-                  <Building2 size={15} className="text-[#0F8B8D]" aria-hidden="true" />
+                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[#090D16]">
+                  <Building2 size={15} className="text-[#00A896]" aria-hidden="true" />
                   FOR SERVICE PROVIDERS &amp; ENTERPRISES
                 </span>
-                <span className="rounded-md border border-[#0F8B8D] bg-[#F8FAFC] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#0B1E33]">
+                <span className="rounded-md border border-[#00A896] bg-[#F8FAFC] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#090D16]">
                   B2B &amp; OEM
                 </span>
               </div>
 
-              <h3 className="mt-4 text-lg font-semibold tracking-[-0.02em] text-[#0B1E33]">
+              <h3 className="mt-4 text-lg font-semibold tracking-[-0.02em] text-[#090D16]">
                 Deploy PersonaKey Receivers to deliver instant accessibility and personalised experiences while reducing UK GDPR data-storage liability.
               </h3>
 
               <ul className="mt-4 space-y-2.5 border-t border-[var(--pk-border)] pt-4">
                 <li className="flex items-start gap-2.5 text-sm text-[#334155]">
-                  <Check size={16} className="mt-0.5 shrink-0 text-[#0F8B8D]" aria-hidden="true" />
+                  <Check size={16} className="mt-0.5 shrink-0 text-[#00A896]" aria-hidden="true" />
                   <span>
-                    <strong className="font-semibold text-[#0B1E33]">£4.50 / active user / month</strong> workplace licence with <strong className="font-semibold text-[#0B1E33]">£1,500+</strong> pilot setup.
+                    <strong className="font-semibold text-[#090D16]">£4.50 / active user / month</strong> workplace licence with <strong className="font-semibold text-[#090D16]">£1,500+</strong> pilot setup.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5 text-sm text-[#334155]">
-                  <Check size={16} className="mt-0.5 shrink-0 text-[#0F8B8D]" aria-hidden="true" />
+                  <Check size={16} className="mt-0.5 shrink-0 text-[#00A896]" aria-hidden="true" />
                   <span>
-                    Custom <strong className="font-semibold text-[#0B1E33]">Receiver SDK / API</strong> licensing for healthcare, mobility, and hospitality partners.
+                    Custom <strong className="font-semibold text-[#090D16]">Receiver SDK / API</strong> licensing for healthcare, mobility, and hospitality partners.
                   </span>
                 </li>
               </ul>
@@ -149,16 +152,22 @@ export function MarketOpportunitySection({
               <button
                 type="button"
                 onClick={onBookPilot}
-                className="pk-focus-ring inline-flex cursor-pointer items-center justify-center rounded-md bg-[#0F8B8D] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#0B1E33]"
+                className="group pk-focus-ring inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-md bg-[#FF6B00] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#090D16]"
               >
-                Book a Workplace Pilot
+                <span>Book a Workplace Pilot</span>
+                <span className="pk-cta-arrow" aria-hidden="true">
+                  <ArrowRight size={13} strokeWidth={2.25} />
+                </span>
               </button>
               <button
                 type="button"
                 onClick={onEnquireSdk}
-                className="pk-focus-ring inline-flex cursor-pointer items-center justify-center rounded-md border border-[var(--pk-border)] bg-[#F8FAFC] px-4 py-2 text-xs font-semibold text-[#0B1E33] transition-colors hover:border-[#0B1E33]"
+                className="group pk-focus-ring inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-md border border-[var(--pk-border)] bg-[#F8FAFC] px-4 py-2 text-xs font-semibold text-[#090D16] transition-colors hover:border-[#00A896]"
               >
-                Deploy Provider Receivers
+                <span>Deploy Provider Receivers</span>
+                <span className="pk-cta-arrow" aria-hidden="true">
+                  <ArrowRight size={13} strokeWidth={2.25} />
+                </span>
               </button>
             </div>
           </article>
@@ -169,10 +178,10 @@ export function MarketOpportunitySection({
           {UK_MARKET_EVIDENCE.map((driver) => (
             <article
               key={driver.metric}
-              className="flex flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#0F8B8D] bg-[var(--pk-surface)] p-5 shadow-xs"
+              className="pk-card-hover flex flex-col justify-between rounded-lg border border-[var(--pk-border)] border-t-2 border-t-[#00A896] bg-[var(--pk-surface)] p-5"
             >
               <div>
-                <p className="text-2xl font-semibold tracking-[-0.02em] text-[#0B1E33] tabular-nums sm:text-3xl">
+                <p className="font-display text-2xl font-bold tracking-[-0.03em] text-[#090D16] tabular-nums sm:text-3xl">
                   {driver.metric}
                 </p>
                 <p className="pk-scaled-small mt-3 text-[#334155]">

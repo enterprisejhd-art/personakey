@@ -203,16 +203,16 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
   };
 
   return (
-    <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] shadow-xs">
+    <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC]">
       {/* Console Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-t-lg border-b border-[#E2E8F0] bg-[#FFFFFF] px-5 py-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-xs font-semibold tracking-[0.04em] text-[#0B1E33]">
+            <span className="font-mono text-xs font-semibold tracking-[0.04em] text-[#090D16]">
               LIVE RECEIVER NETWORK CONSOLE
             </span>
-            <span className="inline-flex items-center gap-1 rounded-md border border-[#0F8B8D] bg-[#F8FAFC] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#0B1E33]">
-              <ShieldCheck size={12} className="text-[#0F8B8D]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-1 rounded-md border border-[#00A896] bg-[#F8FAFC] px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#090D16]">
+              <ShieldCheck size={12} className="text-[#00A896]" aria-hidden="true" />
               Zero Personal Data Retained
             </span>
           </div>
@@ -226,7 +226,7 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
             <button
               type="button"
               onClick={handleGlobalEndOfShiftWipe}
-              className="pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md bg-[#0F8B8D] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#0B1E33] sm:whitespace-nowrap"
+              className="pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md bg-[#FF6B00] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#090D16] sm:whitespace-nowrap"
             >
               <RotateCcw size={14} aria-hidden="true" />
               Simulate End-of-Shift Global Wipe
@@ -235,7 +235,7 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
             <button
               type="button"
               onClick={handleRestoreNetwork}
-              className="pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md border border-[#0B1E33] bg-[#FFFFFF] px-4 py-2 text-xs font-semibold text-[#0B1E33] transition-colors hover:bg-[#0B1E33] hover:text-[#FFFFFF] sm:whitespace-nowrap"
+              className="pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md border border-[#090D16] bg-[#FFFFFF] px-4 py-2 text-xs font-semibold text-[#090D16] transition-colors hover:bg-[#090D16] hover:text-[#FFFFFF] sm:whitespace-nowrap"
             >
               <RefreshCw size={14} aria-hidden="true" />
               Restore All 6 Receivers
@@ -264,23 +264,23 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                 type="button"
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.985 }}
                 onClick={() => handleToggleReceiverTap(rx.id)}
-                className={`pk-focus-ring w-full cursor-pointer rounded-md border p-3.5 text-left transition-colors ${
+                className={`pk-focus-ring pk-card-hover w-full cursor-pointer rounded-md border p-3.5 text-left ${
                   rx.active
                     ? isRecentTap
-                      ? 'border-[#0F8B8D] bg-[#FFFFFF]'
-                      : 'border-[#E2E8F0] bg-[#FFFFFF] hover:border-[#0F8B8D]'
-                    : 'border-[#E2E8F0] bg-[#F8FAFC] hover:border-[#0B1E33]'
+                      ? 'border-[#00A896] bg-[#FFFFFF]'
+                      : 'border-[#E2E8F0] bg-[#FFFFFF]'
+                    : 'border-[#E2E8F0] bg-[#F8FAFC]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#0B1E33]">
+                  <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#090D16]">
                     <Monitor size={13} className="text-[#64748B]" aria-hidden="true" />
                     {rx.label}
                   </span>
                   <span
                     className={`rounded-md border px-2 py-0.5 font-mono text-[10px] font-semibold ${
                       rx.active
-                        ? 'border-[#0F8B8D] bg-[#F8FAFC] text-[#0B1E33]'
+                        ? 'border-[#00A896] bg-[#F8FAFC] text-[#090D16]'
                         : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B]'
                     }`}
                   >
@@ -294,12 +294,12 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                   {rx.active ? (
                     <>
                       <div className="flex items-center justify-between gap-1.5">
-                        <span className="font-mono text-[11px] font-medium text-[#0B1E33]">
+                        <span className="font-mono text-[11px] font-medium text-[#090D16]">
                           {rx.token}
                         </span>
                         {rx.tokenType === 'nfc' ? (
                           <span
-                            className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-xs bg-[#D4A338] text-[#0B1E33]"
+                            className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
                             title="NFC Hardware Tap"
                             aria-label="NFC Hardware Tap"
                           >
@@ -317,10 +317,10 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                     </>
                   ) : (
                     <>
-                      <p className="font-mono text-[11px] font-medium text-[#0B1E33]">
+                      <p className="font-mono text-[11px] font-medium text-[#090D16]">
                         0 Bytes Retained
                       </p>
-                      <p className="mt-1 font-mono text-[10px] text-[#0F8B8D]">
+                      <p className="mt-1 font-mono text-[10px] text-[#00A896]">
                         Click to simulate live tap
                       </p>
                     </>
@@ -334,8 +334,8 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
         {/* Zero Personal Data Retained Audit Logs */}
         <div className="mt-4 rounded-md border border-[#E2E8F0] bg-[#FFFFFF]">
           <div className="flex items-center justify-between border-b border-[#E2E8F0] px-3.5 py-2">
-            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold text-[#0B1E33]">
-              <CheckCircle2 size={13} className="text-[#0F8B8D]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold text-[#090D16]">
+              <CheckCircle2 size={13} className="text-[#00A896]" aria-hidden="true" />
               Network Audit Log (Zero Personal Data Retained)
             </span>
             <span className="font-mono text-[10px] text-[#64748B]">
@@ -353,7 +353,7 @@ export function WorkplacePilotConsole({ sectorId }: WorkplacePilotConsoleProps) 
                   className="px-3.5 py-2"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-[11px] font-semibold text-[#0B1E33]">
+                    <span className="font-mono text-[11px] font-semibold text-[#090D16]">
                       {entry.event}
                     </span>
                     <span className="font-mono text-[10px] text-[#64748B] tabular-nums">

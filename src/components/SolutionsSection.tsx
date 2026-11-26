@@ -131,10 +131,10 @@ export function SolutionsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <p className="font-mono text-xs font-medium tracking-[0.04em] text-[#64748B]">
+          <p className="font-mono text-xs font-semibold tracking-[0.05em] text-[#00A896]">
             SOLUTIONS &amp; MULTI-SITE RECEIVER CONSOLE
           </p>
-          <h2 className="pk-scaled-heading mt-2.5 font-semibold text-balance text-[#0B1E33]">
+          <h2 className="pk-scaled-heading font-display mt-2.5 font-bold text-balance text-[#090D16]">
             Built for workplaces, NHS responders, EV fleets, and public venues.
           </h2>
           <p className="pk-scaled-small mt-2.5 text-[#334155]">
@@ -161,8 +161,8 @@ export function SolutionsSection() {
                 onClick={() => setActiveTabId(tab.id)}
                 className={`pk-focus-ring -mb-px cursor-pointer border-b-2 px-4 py-3 text-left text-sm font-medium transition-colors sm:whitespace-nowrap ${
                   isSelected
-                    ? 'border-[#0F8B8D] font-semibold text-[#0B1E33]'
-                    : 'border-transparent text-[#64748B] hover:border-[#E2E8F0] hover:text-[#0B1E33]'
+                    ? 'border-[#00A896] font-semibold text-[#090D16]'
+                    : 'border-transparent text-[#64748B] hover:border-[#E2E8F0] hover:text-[#090D16]'
                 }`}
               >
                 {tab.label}
@@ -188,7 +188,7 @@ export function SolutionsSection() {
                 exit={shouldReduceMotion ? undefined : { opacity: 0, y: -4 }}
                 transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
               >
-                <h3 className="pk-scaled-subheading font-semibold text-[#0B1E33]">
+                <h3 className="pk-scaled-subheading font-display font-bold text-[#090D16]">
                   {activeTab.headline}
                 </h3>
                 <p className="pk-scaled-small mt-3 text-[#334155]">
@@ -201,11 +201,11 @@ export function SolutionsSection() {
                       <Check
                         size={16}
                         strokeWidth={2.25}
-                        className="mt-0.5 shrink-0 text-[#0F8B8D]"
+                        className="mt-0.5 shrink-0 text-[#00A896]"
                         aria-hidden="true"
                       />
                       <div>
-                        <p className="text-sm font-semibold text-[#0B1E33]">
+                        <p className="text-sm font-semibold text-[#090D16]">
                           {benefit.title}
                         </p>
                         <p className="pk-scaled-small mt-1 text-[#334155]">

@@ -37,20 +37,20 @@ const TRUST_PILLARS: TrustPillar[] = [
 function PillarIcon({ type }: { type: TrustPillar['icon'] }) {
   switch (type) {
     case 'gdpr':
-      return <ShieldCheck size={15} className="shrink-0 text-[#0F8B8D]" aria-hidden="true" />;
+      return <ShieldCheck size={15} className="shrink-0 text-[#00A896]" aria-hidden="true" />;
     case 'tap':
       return (
         <span
-          className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-xs bg-[#D4A338] text-[#0B1E33]"
+          className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
           aria-hidden="true"
         >
           <Nfc size={10} strokeWidth={2.25} />
         </span>
       );
     case 'diagnostic':
-      return <FileLock2 size={15} className="shrink-0 text-[#0F8B8D]" aria-hidden="true" />;
+      return <FileLock2 size={15} className="shrink-0 text-[#00A896]" aria-hidden="true" />;
     case 'pilot':
-      return <CalendarCheck2 size={15} className="shrink-0 text-[#0F8B8D]" aria-hidden="true" />;
+      return <CalendarCheck2 size={15} className="shrink-0 text-[#00A896]" aria-hidden="true" />;
   }
 }
 
@@ -75,7 +75,7 @@ export function ComplianceTrustBar() {
                 </span>
                 <PillarIcon type={pillar.icon} />
               </div>
-              <p className="mt-1.5 text-xs font-semibold text-[#0B1E33]">
+              <p className="mt-1.5 text-xs font-semibold text-[#090D16]">
                 {pillar.label}
               </p>
               <p className="pk-scaled-xs mt-1 text-[#334155]">{pillar.detail}</p>

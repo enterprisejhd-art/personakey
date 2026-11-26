@@ -97,7 +97,7 @@ export function ModalDrawer({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B1E33]/55 p-4 sm:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#090D16]/60 p-4 sm:p-6"
       role="presentation"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) {
@@ -111,19 +111,19 @@ export function ModalDrawer({
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="flex max-h-[90vh] w-full max-w-xl flex-col rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] text-[#334155] shadow-xs outline-none"
+        className="flex max-h-[90vh] w-full max-w-xl flex-col rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] text-[#334155] outline-none"
       >
         {/* Modal Header */}
         <div className="flex items-start justify-between gap-4 border-b border-[#E2E8F0] px-6 py-4">
           <div>
             {eyebrow && (
-              <p className="font-mono text-[11px] font-medium tracking-[0.04em] text-[#64748B]">
+              <p className="font-mono text-[11px] font-semibold tracking-[0.04em] text-[#00A896]">
                 {eyebrow}
               </p>
             )}
             <h2
               id={titleId}
-              className="mt-1 text-lg font-semibold tracking-[-0.02em] text-[#0B1E33]"
+              className="font-display mt-1 text-lg font-bold tracking-[-0.02em] text-[#090D16]"
             >
               {title}
             </h2>
@@ -133,7 +133,7 @@ export function ModalDrawer({
             type="button"
             onClick={onClose}
             aria-label="Close modal"
-            className="pk-focus-ring inline-flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-md border border-[#E2E8F0] bg-[#FFFFFF] text-[#334155] transition-colors hover:border-[#0B1E33] hover:text-[#0B1E33]"
+            className="pk-focus-ring inline-flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-md border border-[#E2E8F0] bg-[#FFFFFF] text-[#334155] transition-colors hover:border-[#090D16] hover:text-[#090D16]"
           >
             <X size={16} aria-hidden="true" />
           </button>

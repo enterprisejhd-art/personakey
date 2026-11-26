@@ -113,27 +113,27 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
     >
       {submission ? (
         <div className="space-y-5">
-          <div className="rounded-lg border border-[#0F8B8D] bg-[#F8FAFC] p-4">
+          <div className="rounded-lg border border-[#00A896] bg-[#F8FAFC] p-4">
             <div className="flex items-center justify-between gap-2">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B1E33]">
-                <Check size={15} strokeWidth={2.25} className="text-[#0F8B8D]" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#090D16]">
+                <Check size={15} strokeWidth={2.25} className="text-[#00A896]" aria-hidden="true" />
                 Beta Cohort Spot Reserved
               </span>
-              <span className="font-mono text-xs font-medium text-[#0B1E33]">
+              <span className="font-mono text-xs font-medium text-[#090D16]">
                 {submission.queueId}
               </span>
             </div>
             <p className="mt-2 text-sm text-[#334155]">
-              Thank you, <strong className="text-[#0B1E33]">{submission.name}</strong>.
+              Thank you, <strong className="text-[#090D16]">{submission.name}</strong>.
               You have been placed in the controlled 100-user beta cohort queue
-              for <strong className="text-[#0B1E33]">{submission.email}</strong>.
+              for <strong className="text-[#090D16]">{submission.email}</strong>.
             </p>
           </div>
 
           <dl className="space-y-2.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4 text-xs">
             <div>
               <dt className="font-mono text-[11px] text-[#64748B]">PRIMARY USE CASE</dt>
-              <dd className="mt-0.5 font-medium text-[#0B1E33]">
+              <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.useCase}
               </dd>
             </div>
@@ -141,32 +141,32 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
               <dt className="font-mono text-[11px] text-[#64748B]">
                 PREFERRED ACTIVATION
               </dt>
-              <dd className="mt-0.5 font-medium text-[#0B1E33]">
+              <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.activationLabel}
               </dd>
             </div>
             <div>
               <dt className="font-mono text-[11px] text-[#64748B]">DEVICES USED</dt>
-              <dd className="mt-0.5 font-medium text-[#0B1E33]">
+              <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.devices.join(' · ')}
               </dd>
             </div>
           </dl>
 
           <div className="rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-3.5 text-xs leading-relaxed text-[#334155]">
-            <strong className="text-[#0B1E33]">Privacy Notice:</strong> Your beta
+            <strong className="text-[#090D16]">Privacy Notice:</strong> Your beta
             registration details are used solely to invite you to the cohort and
             match adaptor compatibility. PersonaKey never collects or stores
             medical diagnoses, health records, or passive location telemetry.
             Request removal at any time via{' '}
-            <span className="font-mono text-[#0B1E33]">hello@personakey.co.uk</span>.
+            <span className="font-mono text-[#090D16]">hello@personakey.co.uk</span>.
           </div>
 
           <div className="flex justify-end border-t border-[#E2E8F0] pt-4">
             <button
               type="button"
               onClick={handleResetAndClose}
-              className="pk-focus-ring cursor-pointer rounded-md bg-[#0F8B8D] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#0B1E33]"
+              className="pk-focus-ring cursor-pointer rounded-md bg-[#00A896] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#090D16]"
             >
               Done
             </button>
@@ -183,7 +183,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
           {errorMessage && (
             <div
               role="alert"
-              className="rounded-md border border-[#0B1E33] bg-[#F8FAFC] px-3.5 py-2.5 text-xs font-medium text-[#0B1E33]"
+              className="rounded-md border border-[#090D16] bg-[#F8FAFC] px-3.5 py-2.5 text-xs font-medium text-[#090D16]"
             >
               {errorMessage}
             </div>
@@ -193,7 +193,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
             <div>
               <label
                 htmlFor="beta-name"
-                className="block text-xs font-semibold text-[#0B1E33]"
+                className="block text-xs font-semibold text-[#090D16]"
               >
                 Name
               </label>
@@ -204,14 +204,14 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Oliver Bennett"
-                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33] placeholder:text-[#64748B]"
+                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16] placeholder:text-[#64748B]"
               />
             </div>
 
             <div>
               <label
                 htmlFor="beta-email"
-                className="block text-xs font-semibold text-[#0B1E33]"
+                className="block text-xs font-semibold text-[#090D16]"
               >
                 Email
               </label>
@@ -222,7 +222,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="oliver@example.co.uk"
-                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33] placeholder:text-[#64748B]"
+                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16] placeholder:text-[#64748B]"
               />
             </div>
           </div>
@@ -230,7 +230,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
           <div>
             <label
               htmlFor="beta-use-case"
-              className="block text-xs font-semibold text-[#0B1E33]"
+              className="block text-xs font-semibold text-[#090D16]"
             >
               Primary Use Case
             </label>
@@ -240,7 +240,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
               onChange={(e) =>
                 setUseCase(e.target.value as (typeof USE_CASES)[number])
               }
-              className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33]"
+              className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16]"
             >
               {USE_CASES.map((option) => (
                 <option key={option} value={option}>
@@ -251,7 +251,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
           </div>
 
           <div>
-            <span className="block text-xs font-semibold text-[#0B1E33]">
+            <span className="block text-xs font-semibold text-[#090D16]">
               Preferred Activation
             </span>
             <div className="mt-1.5 space-y-2">
@@ -262,7 +262,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
                     key={option.id}
                     className={`flex cursor-pointer items-center justify-between gap-3 rounded-md border px-3.5 py-2.5 text-xs font-medium transition-colors ${
                       isSelected
-                        ? 'border-[#0B1E33] bg-[#F8FAFC] text-[#0B1E33]'
+                        ? 'border-[#090D16] bg-[#F8FAFC] text-[#090D16]'
                         : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#334155]'
                     }`}
                   >
@@ -272,13 +272,13 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
                         name="preferred-activation"
                         checked={isSelected}
                         onChange={() => setActivationId(option.id)}
-                        className="pk-focus-ring accent-[#0F8B8D]"
+                        className="pk-focus-ring accent-[#00A896]"
                       />
                       <span>{option.label}</span>
                     </span>
                     {option.hasHardwareIndicator && (
                       <span
-                        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-xs bg-[#D4A338] text-[#0B1E33]"
+                        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-xs bg-[#FF6B00] text-[#FFFFFF]"
                         aria-hidden="true"
                       >
                         <Nfc size={12} strokeWidth={2.25} />
@@ -291,7 +291,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
           </div>
 
           <div>
-            <span className="block text-xs font-semibold text-[#0B1E33]">
+            <span className="block text-xs font-semibold text-[#090D16]">
               Devices Used
             </span>
             <div className="mt-1.5 grid grid-cols-2 gap-2">
@@ -302,7 +302,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
                     key={device}
                     className={`flex cursor-pointer items-center gap-2.5 rounded-md border px-3 py-2 text-xs font-medium transition-colors ${
                       isChecked
-                        ? 'border-[#0B1E33] bg-[#F8FAFC] text-[#0B1E33]'
+                        ? 'border-[#090D16] bg-[#F8FAFC] text-[#090D16]'
                         : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#334155]'
                     }`}
                   >
@@ -310,7 +310,7 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
                       type="checkbox"
                       checked={isChecked}
                       onChange={() => handleToggleDevice(device)}
-                      className="pk-focus-ring accent-[#0F8B8D]"
+                      className="pk-focus-ring accent-[#00A896]"
                     />
                     <span>{device}</span>
                   </label>
@@ -323,13 +323,13 @@ export function ConsumerBetaModal({ isOpen, onClose }: ConsumerBetaModalProps) {
             <button
               type="button"
               onClick={handleResetAndClose}
-              className="pk-focus-ring cursor-pointer rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2 text-xs font-medium text-[#334155] transition-colors hover:border-[#0B1E33] hover:text-[#0B1E33]"
+              className="pk-focus-ring cursor-pointer rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2 text-xs font-medium text-[#334155] transition-colors hover:border-[#090D16] hover:text-[#090D16]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="pk-focus-ring cursor-pointer rounded-md bg-[#0F8B8D] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#0B1E33]"
+              className="pk-focus-ring cursor-pointer rounded-md bg-[#00A896] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#090D16]"
             >
               Reserve Beta Spot
             </button>

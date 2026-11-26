@@ -134,10 +134,10 @@ Set-ItemProperty -Path "HKCU:\\Control Panel\\Accessibility\\HighContrast" -Name
   const activeTab = tabs.find((t) => t.id === activeTabId) ?? tabs[0];
 
   return (
-    <div className="mt-10 rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)] shadow-xs">
+    <div className="mt-10 rounded-lg border border-[var(--pk-border)] bg-[var(--pk-surface)]">
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
         <div className="flex items-center gap-2.5">
-          <Code2 size={16} className="shrink-0 text-[#0F8B8D]" aria-hidden="true" />
+          <Code2 size={16} className="shrink-0 text-[#00A896]" aria-hidden="true" />
           <div>
             <h3 className="text-sm font-semibold tracking-[-0.01em] text-[var(--pk-heading)]">
               Preference Translation Engine &amp; Partner SDK
@@ -153,7 +153,7 @@ Set-ItemProperty -Path "HKCU:\\Control Panel\\Accessibility\\HighContrast" -Name
           aria-expanded={isOpen}
           aria-controls="partner-sdk-drawer"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="pk-focus-ring inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface-muted)] px-3.5 py-2 font-mono text-xs font-medium text-[var(--pk-heading)] transition-colors hover:border-[#0B1E33] whitespace-nowrap"
+          className="pk-focus-ring inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-md border border-[var(--pk-border)] bg-[var(--pk-surface-muted)] px-3.5 py-2 font-mono text-xs font-medium text-[var(--pk-heading)] transition-colors hover:border-[#00A896] whitespace-nowrap"
         >
           {isOpen ? 'Hide Technical Specs' : 'Inspect Partner SDK'}
           {isOpen ? (
@@ -186,8 +186,8 @@ Set-ItemProperty -Path "HKCU:\\Control Panel\\Accessibility\\HighContrast" -Name
                   onClick={() => setActiveTabId(tab.id)}
                   className={`pk-focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-md border px-3 py-1.5 font-mono text-xs font-medium transition-colors sm:whitespace-nowrap ${
                     isSelected
-                      ? 'border-[#0B1E33] bg-[#0B1E33] text-[#FFFFFF]'
-                      : 'border-[var(--pk-border)] bg-[#FFFFFF] text-[var(--pk-text)] hover:border-[#0B1E33] hover:text-[var(--pk-heading)]'
+                      ? 'border-[#090D16] bg-[#090D16] text-[#FFFFFF]'
+                      : 'border-[var(--pk-border)] bg-[#FFFFFF] text-[var(--pk-text)] hover:border-[#00A896] hover:text-[var(--pk-heading)]'
                   }`}
                 >
                   {tab.id === 'intent-schema' && <FileJson size={13} aria-hidden="true" />}
@@ -202,7 +202,7 @@ Set-ItemProperty -Path "HKCU:\\Control Panel\\Accessibility\\HighContrast" -Name
           <pre
             id="partner-sdk-tabpanel"
             role="tabpanel"
-            className="mt-4 max-h-[340px] overflow-auto rounded-md border border-[var(--pk-border)] bg-[#0B1E33] p-4 font-mono text-xs leading-relaxed text-[#F8FAFC]"
+            className="mt-4 max-h-[340px] overflow-auto rounded-md border border-[#1E293B] bg-[#090D16] p-4 font-mono text-xs leading-relaxed text-[#F8FAFC]"
           >
             <code>{activeTab.content}</code>
           </pre>

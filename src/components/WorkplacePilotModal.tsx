@@ -168,20 +168,20 @@ export function WorkplacePilotModal({
     >
       {submission ? (
         <div className="space-y-5">
-          <div className="rounded-lg border border-[#0F8B8D] bg-[#F8FAFC] p-4">
+          <div className="rounded-lg border border-[#00A896] bg-[#F8FAFC] p-4">
             <div className="flex items-center justify-between gap-2">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B1E33]">
-                <Check size={15} strokeWidth={2.25} className="text-[#0F8B8D]" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#090D16]">
+                <Check size={15} strokeWidth={2.25} className="text-[#00A896]" aria-hidden="true" />
                 Pilot Request Logged
               </span>
-              <span className="font-mono text-xs font-medium text-[#0B1E33]">
+              <span className="font-mono text-xs font-medium text-[#090D16]">
                 {submission.referenceId}
               </span>
             </div>
             <p className="mt-2 text-sm text-[#334155]">
-              Thank you, <strong className="text-[#0B1E33]">{submission.fullName}</strong>.
+              Thank you, <strong className="text-[#090D16]">{submission.fullName}</strong>.
               Your {submission.enquiryRoute === 'sdk' ? 'SDK licensing' : 'workplace pilot'}{' '}
-              enquiry for <strong className="text-[#0B1E33]">{submission.organisationName}</strong>{' '}
+              enquiry for <strong className="text-[#090D16]">{submission.organisationName}</strong>{' '}
               has been prepared for technical review.
             </p>
           </div>
@@ -190,25 +190,25 @@ export function WorkplacePilotModal({
           <dl className="grid grid-cols-1 gap-3 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4 text-xs sm:grid-cols-2">
             <div>
               <dt className="font-mono text-[11px] text-[#64748B]">WORK EMAIL</dt>
-              <dd className="mt-0.5 font-medium text-[#0B1E33]">
+              <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.workEmail}
               </dd>
             </div>
             <div>
               <dt className="font-mono text-[11px] text-[#64748B]">ORGANISATION TYPE</dt>
-              <dd className="mt-0.5 font-medium text-[#0B1E33]">
+              <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.organisationType}
               </dd>
             </div>
             <div>
               <dt className="font-mono text-[11px] text-[#64748B]">SHARED DESKS</dt>
-              <dd className="mt-0.5 font-medium text-[#0B1E33] tabular-nums">
+              <dd className="mt-0.5 font-medium text-[#090D16] tabular-nums">
                 {submission.approximateSharedDesks}
               </dd>
             </div>
             <div>
               <dt className="font-mono text-[11px] text-[#64748B]">PRIMARY OS</dt>
-              <dd className="mt-0.5 font-medium text-[#0B1E33]">
+              <dd className="mt-0.5 font-medium text-[#090D16]">
                 {submission.primaryOsEnvironment}
               </dd>
             </div>
@@ -222,17 +222,17 @@ export function WorkplacePilotModal({
 
           {/* 4-Week Controlled Pilot Onboarding Steps */}
           <div>
-            <h3 className="font-mono text-xs font-semibold tracking-[0.04em] text-[#0B1E33]">
+            <h3 className="font-mono text-xs font-semibold tracking-[0.04em] text-[#090D16]">
               4-WEEK CONTROLLED PILOT ONBOARDING
             </h3>
             <ol className="mt-2.5 divide-y divide-[#E2E8F0] rounded-lg border border-[#E2E8F0] bg-[#F8FAFC]">
               {ONBOARDING_STEPS.map((item) => (
                 <li key={item.week} className="px-4 py-3">
                   <div className="flex items-baseline gap-2">
-                    <span className="font-mono text-[11px] font-semibold text-[#0B1E33]">
+                    <span className="font-mono text-[11px] font-semibold text-[#090D16]">
                       {item.week}
                     </span>
-                    <span className="text-xs font-semibold text-[#0B1E33]">
+                    <span className="text-xs font-semibold text-[#090D16]">
                       {item.title}
                     </span>
                   </div>
@@ -246,7 +246,7 @@ export function WorkplacePilotModal({
             <button
               type="button"
               onClick={handleDownloadJson}
-              className="pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md border border-[#0B1E33] bg-[#FFFFFF] px-4 py-2 text-xs font-semibold text-[#0B1E33] transition-colors hover:bg-[#0B1E33] hover:text-[#FFFFFF]"
+              className="pk-focus-ring inline-flex cursor-pointer items-center gap-2 rounded-md border border-[#090D16] bg-[#FFFFFF] px-4 py-2 text-xs font-semibold text-[#090D16] transition-colors hover:bg-[#090D16] hover:text-[#FFFFFF]"
             >
               <Download size={14} aria-hidden="true" />
               Download JSON Summary
@@ -255,7 +255,7 @@ export function WorkplacePilotModal({
             <button
               type="button"
               onClick={handleResetAndClose}
-              className="pk-focus-ring cursor-pointer rounded-md bg-[#0F8B8D] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#0B1E33]"
+              className="pk-focus-ring cursor-pointer rounded-md bg-[#00A896] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#090D16]"
             >
               Done
             </button>
@@ -272,7 +272,7 @@ export function WorkplacePilotModal({
           {errorMessage && (
             <div
               role="alert"
-              className="rounded-md border border-[#0B1E33] bg-[#F8FAFC] px-3.5 py-2.5 text-xs font-medium text-[#0B1E33]"
+              className="rounded-md border border-[#090D16] bg-[#F8FAFC] px-3.5 py-2.5 text-xs font-medium text-[#090D16]"
             >
               {errorMessage}
             </div>
@@ -282,7 +282,7 @@ export function WorkplacePilotModal({
             <div>
               <label
                 htmlFor="pilot-full-name"
-                className="block text-xs font-semibold text-[#0B1E33]"
+                className="block text-xs font-semibold text-[#090D16]"
               >
                 Full Name
               </label>
@@ -293,14 +293,14 @@ export function WorkplacePilotModal({
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Dr Eleanor Davies"
-                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33] placeholder:text-[#64748B]"
+                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16] placeholder:text-[#64748B]"
               />
             </div>
 
             <div>
               <label
                 htmlFor="pilot-work-email"
-                className="block text-xs font-semibold text-[#0B1E33]"
+                className="block text-xs font-semibold text-[#090D16]"
               >
                 Work Email
               </label>
@@ -311,7 +311,7 @@ export function WorkplacePilotModal({
                 value={workEmail}
                 onChange={(e) => setWorkEmail(e.target.value)}
                 placeholder="e.davies@organisation.co.uk"
-                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33] placeholder:text-[#64748B]"
+                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16] placeholder:text-[#64748B]"
               />
             </div>
           </div>
@@ -320,7 +320,7 @@ export function WorkplacePilotModal({
             <div>
               <label
                 htmlFor="pilot-org-name"
-                className="block text-xs font-semibold text-[#0B1E33]"
+                className="block text-xs font-semibold text-[#090D16]"
               >
                 Organisation Name
               </label>
@@ -331,14 +331,14 @@ export function WorkplacePilotModal({
                 value={organisationName}
                 onChange={(e) => setOrganisationName(e.target.value)}
                 placeholder="Clerkenwell Flex Hubs Ltd"
-                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33] placeholder:text-[#64748B]"
+                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16] placeholder:text-[#64748B]"
               />
             </div>
 
             <div>
               <label
                 htmlFor="pilot-org-type"
-                className="block text-xs font-semibold text-[#0B1E33]"
+                className="block text-xs font-semibold text-[#090D16]"
               >
                 Organisation Type
               </label>
@@ -348,7 +348,7 @@ export function WorkplacePilotModal({
                 onChange={(e) =>
                   setOrganisationType(e.target.value as (typeof ORG_TYPES)[number])
                 }
-                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33]"
+                className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16]"
               >
                 {ORG_TYPES.map((type) => (
                   <option key={type} value={type}>
@@ -360,7 +360,7 @@ export function WorkplacePilotModal({
           </div>
 
           <div>
-            <span className="block text-xs font-semibold text-[#0B1E33]">
+            <span className="block text-xs font-semibold text-[#090D16]">
               Approximate Shared Desks
             </span>
             <div className="mt-1.5 grid grid-cols-3 gap-2">
@@ -374,8 +374,8 @@ export function WorkplacePilotModal({
                     onClick={() => setSharedDesks(range)}
                     className={`pk-focus-ring cursor-pointer rounded-md border px-3 py-2 font-mono text-xs font-medium transition-colors ${
                       isSelected
-                        ? 'border-[#0B1E33] bg-[#0B1E33] text-[#FFFFFF]'
-                        : 'border-[#E2E8F0] bg-[#F8FAFC] text-[#334155] hover:border-[#0B1E33]'
+                        ? 'border-[#090D16] bg-[#090D16] text-[#FFFFFF]'
+                        : 'border-[#E2E8F0] bg-[#F8FAFC] text-[#334155] hover:border-[#090D16]'
                     }`}
                   >
                     {range}
@@ -386,7 +386,7 @@ export function WorkplacePilotModal({
           </div>
 
           <div>
-            <span className="block text-xs font-semibold text-[#0B1E33]">
+            <span className="block text-xs font-semibold text-[#090D16]">
               Primary OS Environment
             </span>
             <div className="mt-1.5 grid grid-cols-1 gap-2 sm:grid-cols-3">
@@ -400,8 +400,8 @@ export function WorkplacePilotModal({
                     onClick={() => setOsEnvironment(os)}
                     className={`pk-focus-ring cursor-pointer rounded-md border px-3 py-2 text-xs font-medium transition-colors ${
                       isSelected
-                        ? 'border-[#0B1E33] bg-[#0B1E33] text-[#FFFFFF]'
-                        : 'border-[#E2E8F0] bg-[#F8FAFC] text-[#334155] hover:border-[#0B1E33]'
+                        ? 'border-[#090D16] bg-[#090D16] text-[#FFFFFF]'
+                        : 'border-[#E2E8F0] bg-[#F8FAFC] text-[#334155] hover:border-[#090D16]'
                     }`}
                   >
                     {os}
@@ -414,7 +414,7 @@ export function WorkplacePilotModal({
           <div>
             <label
               htmlFor="pilot-notes"
-              className="block text-xs font-semibold text-[#0B1E33]"
+              className="block text-xs font-semibold text-[#090D16]"
             >
               Optional Notes
             </label>
@@ -424,7 +424,7 @@ export function WorkplacePilotModal({
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Include details on smart-lighting bridges, accessibility goals, or target launch dates."
-              className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#0B1E33] placeholder:text-[#64748B]"
+              className="pk-focus-ring mt-1.5 w-full rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-sm text-[#090D16] placeholder:text-[#64748B]"
             />
           </div>
 
@@ -432,13 +432,13 @@ export function WorkplacePilotModal({
             <button
               type="button"
               onClick={handleResetAndClose}
-              className="pk-focus-ring cursor-pointer rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2 text-xs font-medium text-[#334155] transition-colors hover:border-[#0B1E33] hover:text-[#0B1E33]"
+              className="pk-focus-ring cursor-pointer rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-2 text-xs font-medium text-[#334155] transition-colors hover:border-[#090D16] hover:text-[#090D16]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="pk-focus-ring cursor-pointer rounded-md bg-[#0F8B8D] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#0B1E33]"
+              className="pk-focus-ring cursor-pointer rounded-md bg-[#00A896] px-4 py-2 text-xs font-semibold text-[#FFFFFF] transition-colors hover:bg-[#090D16]"
             >
               Submit Pilot Request
             </button>

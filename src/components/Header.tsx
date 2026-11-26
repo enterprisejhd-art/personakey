@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import {
   ACCESSIBILITY_OPTIONS,
   type AccessibilityMode,
@@ -50,19 +50,19 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
                 width="22"
                 height="22"
                 rx="4"
-                stroke="#0B1E33"
+                stroke="#090D16"
                 strokeWidth="1.75"
                 fill="#FFFFFF"
               />
-              <circle cx="9.5" cy="12" r="3.25" stroke="#0B1E33" strokeWidth="1.75" />
+              <circle cx="9.5" cy="12" r="3.25" stroke="#090D16" strokeWidth="1.75" />
               <path
                 d="M12.75 12H18.5M16 12V14.75M18.5 12V14"
-                stroke="#0F8B8D"
+                stroke="#00A896"
                 strokeWidth="1.75"
                 strokeLinecap="square"
               />
             </svg>
-            <span className="text-base font-semibold tracking-[-0.02em] text-[var(--pk-heading)] whitespace-nowrap">
+            <span className="font-display text-base font-bold tracking-[-0.03em] text-[var(--pk-heading)] whitespace-nowrap">
               PersonaKey
             </span>
           </a>
@@ -110,7 +110,7 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
                     onClick={() => onModeChange(option.id)}
                     className={`pk-focus-ring shrink-0 cursor-pointer rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors whitespace-nowrap ${
                       isActive
-                        ? 'border border-[var(--pk-border)] bg-[var(--pk-mode-active-bg)] text-[var(--pk-mode-active-text)] shadow-xs'
+                        ? 'border border-[var(--pk-border)] bg-[var(--pk-mode-active-bg)] text-[var(--pk-mode-active-text)]'
                         : 'border border-transparent text-[var(--pk-muted)] hover:text-[var(--pk-heading)]'
                     }`}
                   >
@@ -124,9 +124,12 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
           <button
             type="button"
             onClick={onBookPilot}
-            className="pk-focus-ring inline-flex shrink-0 cursor-pointer items-center justify-center rounded-md bg-[var(--pk-cta-bg)] px-4 py-2 text-sm font-medium text-[var(--pk-cta-text)] transition-colors hover:bg-[var(--pk-cta-hover)] whitespace-nowrap"
+            className="group pk-focus-ring inline-flex shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-md bg-[var(--pk-cta-bg)] px-4 py-2 text-sm font-semibold text-[var(--pk-cta-text)] transition-colors hover:bg-[var(--pk-cta-hover)] whitespace-nowrap"
           >
-            Book a Pilot
+            <span>Book a Pilot</span>
+            <span className="pk-cta-arrow" aria-hidden="true">
+              <ArrowRight size={14} strokeWidth={2.25} />
+            </span>
           </button>
 
           {/* Mobile menu toggle */}
@@ -182,7 +185,7 @@ export function Header({ mode, onModeChange, onBookPilot }: HeaderProps) {
                     onClick={() => onModeChange(option.id)}
                     className={`pk-focus-ring cursor-pointer rounded-md px-1.5 py-2 text-xs font-medium transition-colors sm:whitespace-nowrap sm:px-2.5 ${
                       isActive
-                        ? 'border border-[var(--pk-border)] bg-[var(--pk-mode-active-bg)] text-[var(--pk-mode-active-text)] shadow-xs'
+                        ? 'border border-[var(--pk-border)] bg-[var(--pk-mode-active-bg)] text-[var(--pk-mode-active-text)]'
                         : 'border border-transparent text-[var(--pk-muted)] hover:text-[var(--pk-heading)]'
                     }`}
                   >
